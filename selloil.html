@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>فروش روغن موتور و هیدرولیک</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Vazirmatn", sans-serif;
+      background: #f0f4f8;
+      color: #001d3d;
+      padding: 60px 20px 40px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(90deg, #00122e, #003366);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    .logo {
+      height: 50px;
+      margin-left: 1.5rem;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      border-radius: 10px;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 29, 61, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .card img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .card-content {
+      padding: 1rem 1.2rem;
+      flex-grow: 1;
+    }
+
+    .card-content h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      background: #0072ce;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #005bb5;
+    }
+
+    @media (max-width: 768px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-us {
+      background: #001d3d;
+      color: #fff;
+      max-width: 900px;
+      margin: 3rem auto 4rem auto;
+      padding: 2.5rem 2rem;
+      border-radius: 15px;
+      box-shadow: 0 12px 30px rgba(0,29,61,0.5);
+    }
+
+    .contact-us h2 {
+      font-size: 2.3rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .contact-us p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #70a1ffcc;
+    }
+
+    .contact-info {
+      font-size: 1rem;
+      color: #a0c4ff;
+      text-align: center;
+    }
+
+    .contact-info strong {
+      color: #70a1ff;
+    }
+
+    @media (max-width: 480px) {
+      .contact-us {
+        padding: 2rem 1rem;
+        margin: 2rem 1rem 3rem 1rem;
+      }
+
+      .contact-us h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>فروش روغن موتور و هیدرولیک</h1>
+    <img src="./photos/logo.png" alt="لوگو پویا" class="logo" />
+  </header>
+
+  <section class="products">
+    <div class="card">
+      <img src="./photos/engine-oil.jpg" alt="روغن موتور 20W50" />
+      <div class="card-content">
+        <h2>روغن موتور 20W50</h2>
+        <p>مناسب برای شرایط سخت کاری و موتورهای دیزلی سنگین. پایداری حرارتی و مقاومت در برابر اکسیداسیون.</p>
+        <a href="./oil-20w50.html" class="btn">خرید روغن موتور 20W50</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="./photos/hydraulic-68.jpg" alt="روغن هیدرولیک 68" />
+      <div class="card-content">
+        <h2>روغن هیدرولیک 68</h2>
+        <p>ویسکوزیته پایدار، مناسب برای سیستم‌های هیدرولیکی سنگین، مقاوم در برابر خوردگی و فرسایش.</p>
+        <a href="./hydraulic-68.html" class="btn">خرید روغن هیدرولیک 68</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-us" id="contact">
+    <h2>ارتباط با ما</h2>
+    <p>برای خرید و استعلام قیمت با ما در تماس باشید.</p>
+    <div class="contact-info">
+      <p><strong>تلفن:</strong> 031-37886812 , 031-3788611</p>
+      <p><strong>ایمیل:</strong> mpouya54@gmail.com</p>
+      <p><strong>آدرس:</strong> اصفهان، اتوبان ذوب آهن، بعد از خیابان شفق، کوی 61، پلاک 122</p>
+    </div>
+  </section>
+</body>
+</html>
