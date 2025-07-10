@@ -13,6 +13,7 @@
       padding: 100px 20px 40px;
       color: #001d3d;
     }
+    
     :root {
             --primary-dark: #001d3d;
             --primary-medium: #003566;
@@ -357,13 +358,46 @@
       top: 10px;
       left: 10px;
     }
+    /* تبلت‌ها (768px تا 1024px) */
+@media (max-width: 1024px) {
+  .hero-content h1 { font-size: 2.5rem; }
+  .hero-content p { font-size: 1.1rem; }
+  .grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .card img { height: 150px; }
+}
+
+/* موبایل (تا 768px) */
+@media (max-width: 768px) {
+  .main-header { padding: 0 1rem; }
+  .logo { height: 45px; }
+  .company-title { font-size: 1.2rem; }
+  .nav-menu { display: none; }
+  .header-social-icons { display: none; }
+
+  .hero-section { height: auto; padding: 3rem 1rem; }
+  .hero-title { font-size: 2rem; }
+  .hero-subtitle { font-size: 1rem; }
+
+  .grid { grid-template-columns: 1fr; }
+  .card img { height: 200px; }
+  .card-content h3 { font-size: 1rem; }
+  .card-content button { padding: 0.5rem; font-size: 0.9rem; }
+}
+
+/* موبایل کوچک (تا 480px) */
+@media (max-width: 480px) {
+  .hero-title { font-size: 1.8rem; }
+  .hero-subtitle { font-size: 0.9rem; }
+  .card img { height: 150px; }
+}
+
   </style>
 </head>
 <body>
  
     <header class="main-header">
         <div class="header-logo-container">
-            <img src="./photos/logo2.png" alt="لوگوی شرکت پویا" class="logo" />
+            <img src="./photos/logo.png" alt="لوگوی شرکت پویا" class="logo" />
             <h1 class="company-title">عمران و معدن پویا</h1>
         </div>
         <nav class="navbar">
