@@ -4,256 +4,229 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>برندها و قطعات</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary-dark: #001d3d;
+      --primary-medium: #003566;
+      --accent-light: #70a1ff;
+      --text-light: #f0f4f8;
+      --text-dark: #0d1b2a;
+      --background-light: #ffffff;
+      --background-grey: #f8f9fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Vazirmatn', sans-serif;
-      background: #f2f4f8;
-      padding: 100px 20px 40px;
-      color: #001d3d;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+      padding-top: 80px;
     }
-    
-    :root {
-            --primary-dark: #001d3d;
-            --primary-medium: #003566;
-            --accent-light: #70a1ff;
-            --text-light: #f0f4f8;
-            --text-dark: #0d1b2a;
-            --background-light: #ffffff;
-            --background-grey: #f8f9fa;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* --- Header & Navigation --- */
+    .main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      height: 80px;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    .header-logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
 
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: var(--background-light);
-            color: var(--text-dark);
-            line-height: 1.7;
-            padding-top: 80px; /* Space for the fixed header */
-        }
+    .logo {
+      height: 50px;
+      width: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
 
-        /* --- Header & Navigation --- */
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-            height: 80px;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
+    .logo:hover {
+      transform: scale(1.05);
+    }
 
-        .header-logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+    .company-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
 
-        .logo {
-            height: 55px;
-            width: auto;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
+    .navbar {
+      display: flex;
+      align-items: center;
+    }
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 0.5rem;
+    }
 
-        .company-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
+    .nav-item {
+      position: relative;
+    }
 
-        .navbar {
-            display: flex;
-            align-items: center;
-        }
+    .nav-link {
+      display: block;
+      padding: 1rem 1.2rem;
+      text-decoration: none;
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
 
-        .nav-menu {
-            list-style: none;
-            display: flex;
-        }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      right: 1.2rem;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-light);
+      transition: width 0.3s ease;
+    }
 
-        .nav-item {
-            position: relative;
-        }
+    .nav-link:hover,
+    .nav-item:hover > .nav-link {
+      color: var(--accent-light);
+    }
 
-        .nav-link {
-            display: block;
-            padding: 1rem 1.5rem;
-            text-decoration: none;
-            color: var(--primary-dark);
-            font-weight: 600;
-            font-size: 1.1rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
+    .nav-link:hover::after,
+    .nav-item:hover > .nav-link::after {
+      width: calc(100% - 2.4rem);
+    }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 10px;
-            right: 1.5rem;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-light);
-            transition: width 0.3s ease;
-        }
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--background-light);
+      min-width: 280px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      border-top: 3px solid var(--accent-light);
+    }
 
-        .nav-link:hover,
-        .nav-item:hover > .nav-link {
-            color: var(--accent-light);
-        }
+    .nav-item:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
-        .nav-link:hover::after,
-        .nav-item:hover > .nav-link::after {
-            width: calc(100% - 3rem);
-        }
+    .dropdown-content {
+      padding: 1.5rem;
+    }
 
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--background-light);
-            min-width: 280px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            border-top: 3px solid var(--accent-light);
-        }
+    .dropdown-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
 
-        .nav-item:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+    .dropdown-text {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
 
-        .dropdown-content {
-            padding: 1rem;
-        }
+    .dropdown-list {
+      list-style: none;
+    }
 
-        .dropdown-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
+    .dropdown-list a {
+      text-decoration: none;
+      color: var(--primary-medium);
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
 
-        .dropdown-text {
-            color: #555;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
+    .dropdown-list a:hover {
+      background-color: var(--background-grey);
+      color: var(--accent-light);
+      transform: translateX(-5px);
+    }
 
-        .dropdown-list {
-            list-style: none;
-        }
+    .header-social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-left: 1.5rem;
+      border-left: 1px solid #ddd;
+      padding-left: 1.5rem;
+    }
 
-        .dropdown-list a {
-            text-decoration: none;
-            color: var(--primary-medium);
-            display: block;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
+    .header-social-icons a {
+      color: var(--primary-medium);
+      font-size: 1.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
 
-        .dropdown-list a:hover {
-            background-color: var(--background-grey);
-            color: var(--accent-light);
-            transform: translateX(-5px);
-        }
-        
-        .header-social-icons {
-             display: flex;
-             gap: 1rem;
-             margin-left: 2rem;
-             border-left: 1px solid #ddd;
-             padding-left: 2rem;
-        }
+    .header-social-icons a:hover {
+      color: var(--accent-light);
+      transform: translateY(-2px);
+    }
 
-        .header-social-icons a {
-            color: var(--primary-medium);
-            font-size: 1.4rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 0.5rem;
+      border: none;
+      background: none;
+    }
 
-        .header-social-icons a:hover {
-            color: var(--accent-light);
-            transform: translateY(-2px);
-        }
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--primary-dark);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
 
-        /* --- Hero Section --- */
-        .hero-section {
-            position: relative;
-            height: 75vh;
-            background: url('./photos/banner.png') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--background-light);
-            transition: background-image 1s ease-in-out;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 29, 61, 0.8), rgba(0, 29, 61, 0.4));
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 1rem;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            font-weight: 400;
-            opacity: 0.9;
-            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-        }
-
+    /* --- Main Content --- */
     .container {
       max-width: 1400px;
       margin: 0 auto;
@@ -263,252 +236,534 @@
     .hero-section {
       text-align: center;
       margin-bottom: 4rem;
-      color: #001d3d;
+      color: var(--primary-dark);
     }
 
     .hero-title {
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
 
     .hero-subtitle {
-      font-size: 1.2rem;
-      opacity: 0.9;
+      font-size: 1.3rem;
+      opacity: 0.8;
       margin-bottom: 2rem;
+      color: var(--primary-medium);
     }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+
     .card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
       overflow: hidden;
-      transition: transform 0.3s;
+      transition: all 0.3s ease;
+      border: 1px solid #f0f0f0;
     }
+
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
+
     .card img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
+      transition: transform 0.3s ease;
     }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
     .card-content {
-      padding: 1rem;
+      padding: 1.5rem;
+      text-align: center;
     }
+
     .card-content h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-      color: #003366;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      font-weight: 700;
     }
+
     .card-content button {
-      background: #001d3d;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,29,61,0.3);
     }
+
     .card-content button:hover {
-      background: #003366;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,29,61,0.4);
+      background: linear-gradient(135deg, var(--primary-medium), var(--accent-light));
     }
+
     .modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.7);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 2000;
+      padding: 1rem;
     }
+
     .modal-content {
       background: white;
       padding: 2rem;
-      border-radius: 10px;
+      border-radius: 15px;
       max-width: 600px;
-      width: 90%;
-      max-height: 90vh;
+      width: 100%;
+      max-height: 80vh;
       overflow-y: auto;
       font-size: 1rem;
       position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modalSlideIn 0.3s ease-out;
     }
+
+    @keyframes modalSlideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .modal-content h2 {
-      margin-bottom: 1rem;
-      color: #002349;
+      margin-bottom: 1.5rem;
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-light);
     }
+
+    .modal-content p {
+      line-height: 1.8;
+      color: #555;
+      white-space: pre-line;
+    }
+
     .close-btn {
-      background: #d33;
+      background: #dc3545;
       color: white;
       border: none;
-      padding: 0.3rem 1rem;
-      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
       cursor: pointer;
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 15px;
+      left: 15px;
+      font-weight: 600;
+      transition: background 0.3s ease;
     }
-    /* تبلت‌ها (768px تا 1024px) */
-@media (max-width: 1024px) {
-  .hero-content h1 { font-size: 2.5rem; }
-  .hero-content p { font-size: 1.1rem; }
-  .grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-  .card img { height: 150px; }
-}
 
-/* موبایل (تا 768px) */
-@media (max-width: 768px) {
-  .main-header { padding: 0 1rem; }
-  .logo { height: 45px; }
-  .company-title { font-size: 1.2rem; }
-  .nav-menu { display: none; }
-  .header-social-icons { display: none; }
+    .close-btn:hover {
+      background: #c82333;
+    }
 
-  .hero-section { height: auto; padding: 3rem 1rem; }
-  .hero-title { font-size: 2rem; }
-  .hero-subtitle { font-size: 1rem; }
+    /* --- Responsive Design --- */
+    
+    /* Large Desktop (1200px+) */
+    @media (min-width: 1200px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .hero-title {
+        font-size: 3.5rem;
+      }
+    }
 
-  .grid { grid-template-columns: 1fr; }
-  .card img { height: 200px; }
-  .card-content h3 { font-size: 1rem; }
-  .card-content button { padding: 0.5rem; font-size: 0.9rem; }
-}
+    /* Desktop (992px - 1199px) */
+    @media (max-width: 1199px) {
+      .container {
+        padding: 2.5rem 1.5rem;
+      }
+      
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
-/* موبایل کوچک (تا 480px) */
-@media (max-width: 480px) {
-  .hero-title { font-size: 1.8rem; }
-  .hero-subtitle { font-size: 0.9rem; }
-  .card img { height: 150px; }
-}
+    /* Tablet (768px - 991px) */
+    @media (max-width: 991px) {
+      .main-header {
+        padding: 0 1.5rem;
+      }
+      
+      .company-title {
+        font-size: 1.2rem;
+      }
+      
+      .nav-menu {
+        gap: 0.2rem;
+      }
+      
+      .nav-link {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .header-social-icons {
+        gap: 0.8rem;
+        margin-left: 1rem;
+        padding-left: 1rem;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .card img {
+        height: 180px;
+      }
+    }
 
+    /* Mobile Large (576px - 767px) */
+    @media (max-width: 767px) {
+      body {
+        padding-top: 70px;
+      }
+      
+      .main-header {
+        height: 70px;
+        padding: 0 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .logo {
+        height: 40px;
+      }
+      
+      .company-title {
+        font-size: 1rem;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      
+      .nav-menu.active {
+        transform: translateX(0);
+      }
+      
+      .nav-item {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .nav-link {
+        padding: 1rem 0;
+        text-align: right;
+      }
+      
+      .dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border-top: none;
+        border-radius: 0;
+        background: #f8f9fa;
+        margin-top: 0.5rem;
+      }
+      
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .header-social-icons {
+        display: none;
+      }
+      
+      .container {
+        padding: 2rem 1rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .card img {
+        height: 200px;
+      }
+      
+      .modal-content {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+    }
+
+    /* Mobile Small (up to 575px) */
+    @media (max-width: 575px) {
+      .header-logo-container {
+        gap: 0.5rem;
+      }
+      
+      .logo {
+        height: 35px;
+      }
+      
+      .company-title {
+        font-size: 0.9rem;
+      }
+      
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .card-content {
+        padding: 1rem;
+      }
+      
+      .card-content h3 {
+        font-size: 1.1rem;
+      }
+      
+      .card-content button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      
+      .modal-content {
+        padding: 1rem;
+      }
+      
+      .modal-content h2 {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* Extra Small Mobile (up to 320px) */
+    @media (max-width: 320px) {
+      .company-title {
+        display: none;
+      }
+      
+      .hero-title {
+        font-size: 1.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.8rem;
+      }
+      
+      .card img {
+        height: 150px;
+      }
+      
+      .card-content {
+        padding: 0.8rem;
+      }
+    }
+
+    /* Landscape Mobile */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      
+      .modal-content {
+        max-height: 70vh;
+      }
+    }
   </style>
 </head>
 <body>
- 
-    <header class="main-header">
-        <div class="header-logo-container">
-            <img src="./photos/logo.png" alt="لوگوی شرکت پویا" class="logo" />
-            <h1 class="company-title">عمران و معدن پویا</h1>
-        </div>
-        <nav class="navbar">
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">فروشگاه</a>
-                    <div class="dropdown">
-                        <div class="dropdown-content">
-                            <h3 class="dropdown-title">محصولات فروشگاه</h3>
-                            <p class="dropdown-text">مجموعه کاملی از بهترین محصولات را در فروشگاه ما پیدا کنید.</p>
-                            <ul class="dropdown-list">
-                                <li><a href="/devicesell.html">ماشین آلات صنعتی</a></li>
-                                <li><a href="./parts.html">قطعات یدکی</a></li>
-                                <li><a href="./selloil.html">روغن</a></li>
-                                <li><a href="./hammer.html">چکش صنعتی</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">درباره ما</a>
-                     <div class="dropdown">
-                        <div class="dropdown-content">
-                            <h3 class="dropdown-title">درباره شرکت ما</h3>
-                            <p class="dropdown-text">ما یک شرکت پیشرو در زمینه ارائه خدمات و محصولات باکیفیت هستیم.</p>
-                            <ul class="dropdown-list">
-                                <li><a href="#">تاریخچه شرکت</a></li>
-                                <li><a href="#">تیم مدیریت</a></li>
-                                <li><a href="#">ماموریت و چشم‌انداز</a></li>
-                                <li><a href="#">گواهینامه‌ها</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">تماس با ما</a>
-                </li>
-            </ul>
-             <div class="header-social-icons">
-                <a href="https://www.instagram.com/pouya_heavy_machinery/" aria-label="اینستاگرام" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
-                <a href="#" aria-label="واتساپ"><i class="fab fa-whatsapp"></i></a>
+  <header class="main-header">
+    <div class="header-logo-container">
+      <img src="./photos/logo.png" alt="لوگوی شرکت پویا" class="logo" />
+      <h1 class="company-title">عمران و معدن پویا</h1>
+    </div>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav class="navbar">
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item">
+          <a href="#" class="nav-link">فروشگاه</a>
+          <div class="dropdown">
+            <div class="dropdown-content">
+              <h3 class="dropdown-title">محصولات فروشگاه</h3>
+              <p class="dropdown-text">مجموعه کاملی از بهترین محصولات را در فروشگاه ما پیدا کنید.</p>
+              <ul class="dropdown-list">
+                <li><a href="/devicesell.html">ماشین آلات صنعتی</a></li>
+                <li><a href="./parts.html">قطعات یدکی</a></li>
+                <li><a href="./selloil.html">روغن</a></li>
+                <li><a href="./hammer.html">چکش صنعتی</a></li>
+              </ul>
             </div>
-        </nav>
-    </header>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">درباره ما</a>
+          <div class="dropdown">
+            <div class="dropdown-content">
+              <h3 class="dropdown-title">درباره شرکت ما</h3>
+              <p class="dropdown-text">ما یک شرکت پیشرو در زمینه ارائه خدمات و محصولات باکیفیت هستیم.</p>
+              <ul class="dropdown-list">
+                <li><a href="#">تاریخچه شرکت</a></li>
+                <li><a href="#">تیم مدیریت</a></li>
+                <li><a href="#">ماموریت و چشم‌انداز</a></li>
+                <li><a href="#">گواهینامه‌ها</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="nav-link">تماس با ما</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
+  <div class="container">
+    <div class="hero-section">
+      <h1 class="hero-title">برندهای قطعات ماشین‌آلات</h1>
+      <p class="hero-subtitle">بهترین قطعات یدکی از معتبرترین برندهای جهان</p>
+    </div>
 
-  <h1>برندهای قطعات ماشین‌آلات</h1>
-
-  <div class="grid">
-    <div class="card">
-      <img src="./photos/cat.png" alt="Caterpillar">
-      <div class="card-content">
-        <h3>Caterpillar</h3>
-        <button onclick="openModal('caterpillar')">توضیحات بیشتر</button>
+    <div class="grid">
+      <div class="card">
+        <img src="./photos/cat.png" alt="Caterpillar">
+        <div class="card-content">
+          <h3>Caterpillar</h3>
+          <button onclick="openModal('caterpillar')">مشاهده جزئیات</button>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="./photos/volvo.png" alt="Volvo">
-      <div class="card-content">
-        <h3>Volvo</h3>
-        <button onclick="openModal('volvo')">توضیحات بیشتر</button>
+      
+      <div class="card">
+        <img src="./photos/volvo.png" alt="Volvo">
+        <div class="card-content">
+          <h3>Volvo</h3>
+          <button onclick="openModal('volvo')">مشاهده جزئیات</button>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="./photos/komatsu.png" alt="Komatsu">
-      <div class="card-content">
-        <h3>Komatsu</h3>
-        <button onclick="openModal('komatsu')">توضیحات بیشتر</button>
+      
+      <div class="card">
+        <img src="./photos/komatsu.png" alt="Komatsu">
+        <div class="card-content">
+          <h3>Komatsu</h3>
+          <button onclick="openModal('komatsu')">مشاهده جزئیات</button>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="./photos/Hyundai.png" alt="Hyundai">
-      <div class="card-content">
-        <h3>Hyundai</h3>
-        <button onclick="openModal('hyundai')">توضیحات بیشتر</button>
+      
+      <div class="card">
+        <img src="./photos/Hyundai.png" alt="Hyundai">
+        <div class="card-content">
+          <h3>Hyundai</h3>
+          <button onclick="openModal('hyundai')">مشاهده جزئیات</button>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="chinese.jpg" alt="ماشین آلات چینی">
-      <div class="card-content">
-        <h3>ماشین آلات چینی</h3>
-        <button onclick="openModal('chinese')">توضیحات بیشتر</button>
+      
+      <div class="card">
+        <img src="chinese.jpg" alt="ماشین آلات چینی">
+        <div class="card-content">
+          <h3>ماشین آلات چینی</h3>
+          <button onclick="openModal('chinese')">مشاهده جزئیات</button>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="./photos/mitsubishi.png" alt="Mitsubishi">
-      <div class="card-content">
-        <h3>Mitsubishi</h3>
-        <button onclick="openModal('mitsubishi')">توضیحات بیشتر</button>
+      
+      <div class="card">
+        <img src="./photos/mitsubishi.png" alt="Mitsubishi">
+        <div class="card-content">
+          <h3>Mitsubishi</h3>
+          <button onclick="openModal('mitsubishi')">مشاهده جزئیات</button>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="deutz.jpg" alt="Deutz">
-      <div class="card-content">
-        <h3>Deutz</h3>
-        <button onclick="openModal('deutz')">توضیحات بیشتر</button>
+      
+      <div class="card">
+        <img src="deutz.jpg" alt="Deutz">
+        <div class="card-content">
+          <h3>Deutz</h3>
+          <button onclick="openModal('deutz')">مشاهده جزئیات</button>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="cummins.jpg" alt="Cummins">
-      <div class="card-content">
-        <h3>Cummins</h3>
-        <button onclick="openModal('cummins')">توضیحات بیشتر</button>
+      
+      <div class="card">
+        <img src="cummins.jpg" alt="Cummins">
+        <div class="card-content">
+          <h3>Cummins</h3>
+          <button onclick="openModal('cummins')">مشاهده جزئیات</button>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="modal" id="infoModal">
     <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">بستن</button>
+      <button class="close-btn" onclick="closeModal()">×</button>
       <h2 id="modalTitle"></h2>
       <p id="modalText"></p>
     </div>
@@ -517,58 +772,81 @@
   <script>
     const descriptions = {
       caterpillar: `تأمین و فروش قطعات نو و استوک برای لودر، بلدوزر، گریدر شامل:
-- گیربکس
-- سیستم هیدرولیک
-- زیر و بند
-- اکسل
-- مدل‌های پرکاربرد: 966، 950، D8K, D8N, 146G ,140G, 950F`,
+
+• گیربکس
+• سیستم هیدرولیک
+• زیر و بند
+• اکسل
+• مدل‌های پرکاربرد: 966، 950، D8K, D8N, 146G ,140G, 950F
+
+کاترپیلار یکی از معتبرترین برندهای دنیا در زمینه ماشین‌آلات سنگین محسوب می‌شود.`,
 
       volvo: `تأمین و فروش قطعات یدکی نو و استوک لودر، بیل، ژنراتور شامل:
-- موتور: TD60، TD61، TD70، TD71، D6، D7
-- گیربکس
-- پمپ مادر: K3V112، K3V180
-- اکسل
-- سیستم هیدرولیک
-- سیستم برق
-- لودرها: 4400، 4500، L90، L120، L90E/F، L120E/F
-- بیل‌ها: EC210، E240، EC480`,
+
+• موتور: TD60، TD61، TD70، TD71، D6، D7
+• گیربکس
+• پمپ مادر: K3V112، K3V180
+• اکسل
+• سیستم هیدرولیک
+• سیستم برق
+• لودرها: 4400، 4500، L90، L120، L90E/F، L120E/F
+• بیل‌ها: EC210، E240، EC480
+
+ولوو با کیفیت بالا و دوام بیشتر شناخته می‌شود.`,
 
       komatsu: `تأمین و فروش قطعات با بهترین کیفیت و اصالت کالا برای:
-- بیل، بلدوزر، گریدر
-- موتور: 6D140 6D114، 6D125، 102
-- گیربکس
-- پمپ مادر
-- اکسل
-- سیستم هیدرولیک
-- سیستم برق`,
+
+• بیل، بلدوزر، گریدر
+• موتور: 6D140 6D114، 6D125، 102
+• گیربکس
+• پمپ مادر
+• اکسل
+• سیستم هیدرولیک
+• سیستم برق
+
+کوماتسو یکی از پیشروان صنعت ماشین‌آلات در جهان است.`,
 
       hyundai: `تأمین و فروش قطعات تخصصی انواع بیل و لودر هیوندای شامل:
-- موتور: D6BT، S6S، 6BT، 6CT، QSM11
-- گیربکس ZF
-- پمپ مادر: K3v112، K3v180، K5V80، K5v200، Q3W112
-- اکسل ZF
-- سیستم هیدرولیک
-- سیستم برق`,
+
+• موتور: D6BT، S6S، 6BT، 6CT، QSM11
+• گیربکس ZF
+• پمپ مادر: K3v112، K3v180، K5V80، K5v200، Q3W112
+• اکسل ZF
+• سیستم هیدرولیک
+• سیستم برق
+
+هیوندای با تکنولوژی پیشرفته و قیمت مناسب جایگاه ویژه‌ای دارد.`,
 
       chinese: `تأمین قطعات انواع لودر و بیل مکانیکی ماشین‌آلات چینی:
-- موتور: CAT، دویتس , اشتایر
-- گیربکس: ZF و مکانیکی
-- اکسل
-- پمپ مادر
-- سیستم هیدرولیک
-- سیستم برق`,
+
+• موتور: CAT، دویتس , اشتایر
+• گیربکس: ZF و مکانیکی
+• اکسل
+• پمپ مادر
+• سیستم هیدرولیک
+• سیستم برق
+
+ماشین‌آلات چینی با قیمت اقتصادی و در دسترس بودن قطعات مطرح هستند.`,
 
       mitsubishi: `تأمین انواع قطعات موتورهای ژاپنی:
-- میتسوبیشی
-- کوبوتا
-- یانمار`,
 
-      deutz: `قطعات موتورهای هواخشک و آبگرد دوبیتس شامل انواع مدل‌ها برای کاربردهای مختلف.`,
+• میتسوبیشی
+• کوبوتا
+• یانمار
 
-      cummins: `بهترین کیفیت و انواع برندهای مطرح قطعات جهت موتورهای کمنز برای ماشین‌آلات و ژنراتور شامل:
-- 6BT
-- 6CT
-- QSM11`
+موتورهای ژاپنی با کیفیت بالا و مصرف سوخت بهینه شناخته می‌شوند.`,
+
+      deutz: `قطعات موتورهای هواخشک و آبگرد دویتس شامل انواع مدل‌ها برای کاربردهای مختلف.
+
+دویتس با فناوری آلمانی و کیفیت فوق‌العاده در صنعت موتورسازی شهرت دارد.`,
+
+      cummins: `بهترین کیفیت و انواع برندهای مطرح قطعات جهت موتورهای کمینز برای ماشین‌آلات و ژنراتور شامل:
+
+• 6BT
+• 6CT
+• QSM11
+
+کمینز یکی از معتبرترین تولیدکنندگان موتورهای صنعتی در جهان است.`
     };
 
     function openModal(brandKey) {
@@ -576,11 +854,24 @@
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalText').innerText = descriptions[brandKey] || 'اطلاعاتی در دسترس نیست.';
       document.getElementById('infoModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
       document.getElementById('infoModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
     }
-  </script>
-</body>
-</html>
+
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('infoModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+   
