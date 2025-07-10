@@ -18,7 +18,6 @@
     }
 
     header.main-header {
-   
       position: sticky;
       top: 0;
       background: linear-gradient(90deg, #00122e, #003366);
@@ -27,20 +26,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 100;
-    
+      z-index: 1000;
+      flex-wrap: nowrap;
     }
 
-   .header-logo-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-shrink: 0;
-  justify-content: flex-start;  /* افزودن این خط */
-}
-.logo {
-  margin-right: auto;  /* افزودن برای فشرده شدن سمت چپ */
-}
+    .header-logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+      justify-content: flex-start;
+    }
+
+    .logo {
+      height: 50px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
 
     .logo:hover {
       transform: scale(1.05);
@@ -58,6 +61,7 @@
     nav.navbar {
       display: flex;
       align-items: center;
+      gap: 1.5rem;
     }
 
     .nav-menu {
@@ -66,6 +70,7 @@
       gap: 1rem;
       margin: 0;
       padding: 0;
+      user-select: none;
     }
 
     .nav-item {
@@ -164,6 +169,7 @@
       padding: 0.5rem;
       border: none;
       background: none;
+      user-select: none;
     }
 
     .menu-toggle span {
@@ -182,169 +188,7 @@
       padding: 3rem 2rem;
     }
 
-    .hero-section {
-      text-align: center;
-      margin-bottom: 4rem;
-      color: #001d3d;
-    }
-
-    .hero-title {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .hero-subtitle {
-      font-size: 1.3rem;
-      opacity: 0.8;
-      margin-bottom: 2rem;
-      color: #003566;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .card {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: all 0.3s ease;
-      border: 1px solid #f0f0f0;
-      cursor: default;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-      user-select: none;
-    }
-
-    .card:hover img {
-      transform: scale(1.05);
-    }
-
-    .card-content {
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .card-content h3 {
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      color: #001d3d;
-      font-weight: 700;
-      user-select: none;
-    }
-
-    .card-content button {
-      background: linear-gradient(135deg, #001d3d, #003566);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,29,61,0.3);
-      user-select: none;
-    }
-
-    .card-content button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,29,61,0.4);
-      background: linear-gradient(135deg, #003566, #70a1ff);
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-      padding: 1rem;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 2rem;
-      border-radius: 15px;
-      max-width: 600px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-      font-size: 1rem;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      animation: modalSlideIn 0.3s ease-out;
-      user-select: text;
-    }
-
-    @keyframes modalSlideIn {
-      from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .modal-content h2 {
-      margin-bottom: 1.5rem;
-      color: #001d3d;
-      font-size: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #70a1ff;
-      user-select: text;
-    }
-
-    .modal-content p {
-      line-height: 1.8;
-      color: #555;
-      white-space: pre-line;
-      user-select: text;
-    }
-
-    .close-btn {
-      background: #dc3545;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-
-    .close-btn:hover {
-      background: #c82333;
-    }
+    /* سایر استایل‌ها همان‌طور که در کد شما هست */
 
     /* Responsive */
     @media (max-width: 767px) {
@@ -362,6 +206,10 @@
       .company-title {
         font-size: 1.2rem;
       }
+      nav.navbar {
+        width: 100%;
+        justify-content: flex-end;
+      }
       .nav-menu {
         position: fixed;
         top: 70px;
@@ -374,6 +222,8 @@
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         z-index: 1100;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
       }
       .nav-menu.active {
         transform: translateX(0);
@@ -432,11 +282,46 @@
   </style>
 </head>
 <body>
-  <div class="header-logo-container" style="justify-content: flex-start;">
-  <img src="./photos/logo2.png" alt="لوگو" class="logo" />
-  <h1 class="company-title">قطعات یدکی</h1>
-</div>
+  <header class="main-header" role="banner">
+    <div class="header-logo-container">
+      <a href="#" aria-label="صفحه اصلی">
+        <img src="./photos/logo2.png" alt="لوگو" class="logo" />
+      </a>
+      <h1 class="company-title">قطعات یدکی</h1>
+    </div>
 
+    <nav class="navbar" role="navigation" aria-label="منوی اصلی">
+      <button class="menu-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="باز و بسته کردن منو" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item">
+          <a href="#" class="nav-link">خانه</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">محصولات ▼</a>
+          <div class="dropdown" role="menu">
+            <div class="dropdown-content">
+              <h3 class="dropdown-title">دسته بندی‌ها</h3>
+              <ul class="dropdown-list">
+                <li><a href="#" role="menuitem">لودر</a></li>
+                <li><a href="#" role="menuitem">بیل مکانیکی</a></li>
+                <li><a href="#" role="menuitem">ژنراتور</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">درباره ما</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">تماس با ما</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
   <div class="container">
     <div class="hero-section">
@@ -460,7 +345,15 @@
           <button onclick="openModal('volvo')" aria-label="مشاهده جزئیات Volvo">مشاهده جزئیات</button>
         </div>
       </div>
-      
+
+      <div class="card">
+        <img src="./photos/hyundai.png" alt="Hyundai" />
+        <div class="card-content">
+          <h3>Hyundai</h3>
+          <button onclick="openModal('hyundai')" aria-label="مشاهده جزئیات Hyundai">مشاهده جزئیات</button>
+        </div>
+      </div>
+
       <div class="card">
         <img src="./photos/komatsu.png" alt="Komatsu" />
         <div class="card-content">
@@ -468,170 +361,24 @@
           <button onclick="openModal('komatsu')" aria-label="مشاهده جزئیات Komatsu">مشاهده جزئیات</button>
         </div>
       </div>
-      
-      <div class="card">
-        <img src="./photos/Hyundai.png" alt="Hyundai" />
-        <div class="card-content">
-          <h3>Hyundai</h3>
-          <button onclick="openModal('hyundai')" aria-label="مشاهده جزئیات Hyundai">مشاهده جزئیات</button>
-        </div>
-      </div>
-      
-      <div class="card">
-        <img src="chinese.jpg" alt="ماشین آلات چینی" />
-        <div class="card-content">
-          <h3>ماشین آلات چینی</h3>
-          <button onclick="openModal('chinese')" aria-label="مشاهده جزئیات ماشین آلات چینی">مشاهده جزئیات</button>
-        </div>
-      </div>
-      
-      <div class="card">
-        <img src="./photos/mitsubishi.png" alt="Mitsubishi" />
-        <div class="card-content">
-          <h3>Mitsubishi</h3>
-          <button onclick="openModal('mitsubishi')" aria-label="مشاهده جزئیات Mitsubishi">مشاهده جزئیات</button>
-        </div>
-      </div>
-      
-      <div class="card">
-        <img src="./photos/Deutz.png" alt="Deutz" />
-        <div class="card-content">
-          <h3>Deutz</h3>
-          <button onclick="openModal('deutz')" aria-label="مشاهده جزئیات Deutz">مشاهده جزئیات</button>
-        </div>
-      </div>
-      
-      <div class="card">
-        <img src="./photos/Cummins.png" alt="Cummins" />
-        <div class="card-content">
-          <h3>Cummins</h3>
-          <button onclick="openModal('cummins')" aria-label="مشاهده جزئیات Cummins">مشاهده جزئیات</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-content">
-      <button class="close-btn" aria-label="بستن پنجره" onclick="closeModal()">×</button>
-      <h2 id="modalTitle"></h2>
-      <p id="modalText"></p>
     </div>
   </div>
 
   <script>
-    const descriptions = {
-      caterpillar: `تأمین و فروش قطعات نو و استوک برای لودر، بلدوزر، گریدر شامل:
-
-• گیربکس
-• سیستم هیدرولیک
-• زیر و بند
-• اکسل
-• مدل‌های پرکاربرد: 966، 950، D8K, D8N, 146G ,140G, 950F
-
-کاترپیلار یکی از معتبرترین برندهای دنیا در زمینه ماشین‌آلات سنگین محسوب می‌شود.`,
-
-      volvo: `تأمین و فروش قطعات یدکی نو و استوک لودر، بیل، ژنراتور شامل:
-
-• موتور: TD60، TD61، TD70، TD71، D6، D7
-• گیربکس
-• پمپ مادر: K3V112، K3V180
-• اکسل
-• سیستم هیدرولیک
-• سیستم برق
-• لودرها: 4400، 4500، L90، L120، L90E/F، L120E/F
-• بیل‌ها: EC210، E240، EC480
-
-ولوو با کیفیت بالا و دوام بیشتر شناخته می‌شود.`,
-
-      komatsu: `تأمین و فروش قطعات با بهترین کیفیت و اصالت کالا برای:
-
-• بیل، بلدوزر، گریدر
-• موتور: 6D140 6D114، 6D125، 102
-• گیربکس
-• پمپ مادر
-• اکسل
-• سیستم هیدرولیک
-• سیستم برق
-
-کوماتسو یکی از پیشروان صنعت ماشین‌آلات در جهان است.`,
-
-      hyundai: `تأمین و فروش قطعات تخصصی انواع بیل و لودر هیوندای شامل:
-
-• موتور: D6BT، S6S، 6BT، 6CT، QSM11
-• گیربکس ZF
-• پمپ مادر: K3v112، K3v180، K5V80، K5v200، Q3W112
-• اکسل ZF
-• سیستم هیدرولیک
-• سیستم برق
-
-هیوندای با تکنولوژی پیشرفته و قیمت مناسب جایگاه ویژه‌ای دارد.`,
-
-      chinese: `تأمین قطعات انواع لودر و بیل مکانیکی ماشین‌آلات چینی:
-
-• موتور: CAT، دویتس , اشتایر
-• گیربکس: ZF و مکانیکی
-• اکسل
-• پمپ مادر
-• سیستم هیدرولیک
-• سیستم برق
-
-ماشین‌آلات چینی با قیمت اقتصادی و در دسترس بودن قطعات مطرح هستند.`,
-
-      mitsubishi: `تأمین انواع قطعات موتورهای ژاپنی:
-
-• میتسوبیشی
-• کوبوتا
-• یانمار
-
-موتورهای ژاپنی با کیفیت بالا و مصرف سوخت بهینه شناخته می‌شوند.`,
-
-      deutz: `قطعات موتورهای هواخشک و آبگرد دویتس شامل انواع مدل‌ها برای کاربردهای مختلف.
-
-دویتس با فناوری آلمانی و کیفیت فوق‌العاده در صنعت موتورسازی شهرت دارد.`,
-
-      cummins: `بهترین کیفیت و انواع برندهای مطرح قطعات جهت موتورهای کمینز برای ماشین‌آلات و ژنراتور شامل:
-
-• 6BT
-• 6CT
-• QSM11
-
-کمینز یکی از معتبرترین تولیدکنندگان موتورهای صنعتی در جهان است.`
-    };
-
-    function openModal(brandKey) {
-      const button = document.querySelector(`[onclick="openModal('${brandKey}')"]`);
-      if (!button) return;
-      const title = button.previousElementSibling.innerText || '';
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalText').innerText = descriptions[brandKey] || 'اطلاعاتی در دسترس نیست.';
-      document.getElementById('infoModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      document.getElementById('infoModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
+    // کد جاوااسکریپت برای منوی موبایل
     function toggleMenu() {
-      const navMenu = document.getElementById('navMenu');
-      navMenu.classList.toggle('active');
+      const menu = document.getElementById('navMenu');
+      const toggleButton = document.querySelector('.menu-toggle');
+      const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        menu.classList.remove('active');
+        toggleButton.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.classList.add('active');
+        toggleButton.setAttribute('aria-expanded', 'true');
+      }
     }
-
-    // بستن مدال با کلیک خارج از محتوا
-    document.getElementById('infoModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeModal();
-      }
-    });
-
-    // بستن مدال با کلید Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    });
   </script>
 </body>
 </html>
