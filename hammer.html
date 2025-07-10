@@ -2,377 +2,136 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>شرکت عمران و صنعت پویا</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>فروش چکش‌های هیدرولیکی پویا</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: #f8f9fa;
-      color: #001d3d;
-      scroll-behavior: smooth;
-      padding-top: 120px;
-    }
-    header {
-      background: linear-gradient(90deg, #00122e, #003366);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-      border-bottom: 3px solid white;
-      user-select: none;
-      height: 70px;
-    }
-    .logo {
-      height: 50px;
-      margin-left: 1rem;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-      transition: transform 0.3s ease, filter 0.3s ease;
-      cursor: pointer;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-    }
-    .logo:hover {
-      transform: scale(1.15) rotate(5deg);
-      filter: drop-shadow(3px 3px 6px rgba(255,255,255,0.9));
-    }
-    .company-name {
-      flex-grow: 1;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: white;
-      letter-spacing: 1px;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .social-icons {
-      display: flex;
-      gap: 1.2rem;
-      min-width: 80px;
-    }
-    .social-icons a {
-      color: white;
-      font-size: 1.5rem;
-      transition: transform 0.3s ease, color 0.3s ease;
-      text-decoration: none;
-      filter: drop-shadow(0 0 3px white);
-    }
-    .social-icons a:hover {
-      transform: scale(1.3);
-      color: #e0e0e0;
-      filter: drop-shadow(0 0 8px white);
-    }
-    .main-nav {
-      position: fixed;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #001d3d, #003566);
-      z-index: 999;
-      min-height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      padding: 0 1rem;
-    }
-    .nav-links {
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Vazirmatn", sans-serif; background: #fff; color: #001d3d; }
+    header { position: sticky; top: 0; background: linear-gradient(90deg, #00122e, #003366); color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .container { max-width: 1400px; margin: auto; padding: 2rem; }
+    .products {
       display: flex;
       gap: 2rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      width: 100%;
+      flex-wrap: wrap;
       justify-content: center;
     }
-    .nav-links li {
-      position: relative;
+    .card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 300px; /* عرض ثابت برای یکنواختی */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      display: block;
-      font-size: 1rem;
-      white-space: nowrap;
+    .card h2 {
+      margin-bottom: .5rem;
+      text-align: center;
+      width: 100%;
     }
-    .nav-links a:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    .card p {
+      margin-bottom: 1rem;
+      text-align: center;
+      width: 100%;
     }
-    .nav-toggle {
-      display: none;
-      color: white;
-      font-size: 1.8rem;
+    .card img {
+      width: 100%;
+      height: 200px; /* ارتفاع ثابت برای یکنواختی */
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      background: #70a1ff;
+      color: #001d3d;
+      padding: .8rem 1.6rem;
+      border: none;
+      border-radius: 50px;
       cursor: pointer;
+      align-self: center;
+      transition: background-color 0.3s ease;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #4a7dfd;
+    }
+   .modal-overlay {
+  display: none; /* فقط این خط بماند */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+    .modal {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.25);
+    }
+    .modal h2 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .model-list {
+      list-style: none;
+      text-align: right;
+      padding: 0;
+      max-height: 250px;
+      overflow-y: auto;
+      margin: 0 auto;
+      width: 80%;
+    }
+    .model-list li {
+      padding: .5rem 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 1.1rem;
+    }
+    .close {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       background: none;
       border: none;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.6);
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: auto;
-      padding: 2rem;
-      border: 1px solid #888;
-      width: 90%;
-      max-width: 500px;
-      border-radius: 15px;
-      text-align: right;
-      position: relative;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      animation: fadeIn 0.5s ease;
-    }
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: #d33;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
+      font-size: 1.5rem;
       cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    .close-btn:hover {
-      background: #a11;
-    }
-    .background-section {
-      position: relative;
-      background: url('') no-repeat center center/cover;
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-      margin: 2rem auto;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      max-width: 1200px;
-      animation: fadeIn 1.8s ease forwards;
-      overflow: hidden;
-    }
-    .background-section .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 29, 61, 0.7);
-      border-radius: 15px;
-      z-index: 1;
-    }
-    .background-section .content {
-      position: relative;
-      color: #fff;
-      text-align: center;
-      max-width: 600px;
-      z-index: 2;
-      animation: slideUp 1.2s ease forwards;
-    }
-    .background-section h2 {
-      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-    }
-    .background-section p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.7);
-    }
-    .digital-brand-section {
-      padding: 60px 20px;
-      text-align: center;
-      color: #00eaff;
-      position: relative;
-      overflow: hidden;
-    }
-    .background-animation {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, #003366 0%, transparent 60%),
-                  repeating-linear-gradient(45deg, #003366 0 2px, transparent 2px 6px);
-      animation: float-bg 10s linear infinite;
-      z-index: 0;
-    }
-    @keyframes float-bg {
-      0% { transform: translate(-25%, -25%) rotate(0deg); }
-      100% { transform: translate(-25%, -25%) rotate(360deg); }
-    }
-    .digital-brand-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 60px;
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .digital-brand {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .digital-brand:hover {
-      transform: translateY(-5px);
-    }
-    .brand-own {
-      position: relative;
-      width: 160px;
-      height: 160px;
-      background: #001f4d;
-      border-radius: 50%;
-      border: 4px solid #0072ce;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.5), inset 0 4px 8px rgba(0,0,0,0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .logo-svg {
-      width: 90%;
-      height: 90%;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    }
-    .logo-svg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      border-radius: 50%;
-    }
-    .glow {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,122,206,0.4) 0%, rgba(0,122,206,0) 60%);
-      z-index: 1;
-      animation: pulse 3s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.1); opacity: 0.4; }
-    }
-    .brand-name {
-      margin-top: 14px;
-      font-size: 0.95rem;
-      color: #ffffff;
-      padding: 4px 12px;
-      background: #22272f;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
-      letter-spacing: 1px;
-    }
-    .services {
-      padding: 4rem 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 3rem auto;
-    }
-    .service-box {
-      background-color: white;
-      text-decoration: none;
-      color: inherit;
-      border-radius: 1rem;
-      padding: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.25s ease;
-      box-shadow: 0 6px 12px rgba(0, 29, 61, 0.1);
-      user-select: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .service-box:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 29, 61, 0.25);
-    }
-    .service-icon {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      color: #001d3d;
-    }
-    .service-title {
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 0.75rem;
-      color: #001d3d;
-    }
-    .service-desc {
-      font-size: 1rem;
-      color: #003566;
-      line-height: 1.5;
+      color: #333;
     }
     .contact-us {
       background: linear-gradient(135deg, #0f172a, #1e293b);
       color: #fff;
       max-width: 750px;
       margin: 4rem auto;
-      padding: 3rem 2rem;
+      padding: 3rem 2.5rem;
       border-radius: 25px;
       box-shadow: 0 20px 50px rgba(15, 23, 42, 0.6);
+      font-family: 'Vazirmatn', sans-serif;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
     .contact-us h2 {
-      font-size: 2.5rem;
-      text-align: center;
+      font-size: 2.7rem;
       margin-bottom: 1.3rem;
-      font-weight: 700;
+      font-weight: 900;
+      color: #ffffff;
     }
     .contact-us p {
-      text-align: center;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #a5b4fc;
       margin-bottom: 2rem;
     }
     .contact-info {
       margin-top: 2rem;
-      text-align: center;
     }
     .contact-info p {
       font-size: 1.1rem;
@@ -383,341 +142,95 @@
       justify-content: center;
       gap: 0.8rem;
       transition: all 0.3s ease;
-      flex-wrap: wrap;
+      max-width: 500px;
     }
     .contact-info p:hover {
       color: #fff;
+      transform: translateY(-2px);
     }
     .contact-info i {
       color: #60a5fa;
       font-size: 1.3rem;
+      transition: transform 0.3s ease, color 0.3s;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* --- Responsive Design --- */
-    @media screen and (max-width: 992px) {
-      .nav-links {
-        gap: 0.5rem;
-      }
-      .nav-links a {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-      }
-      .services {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      }
-    }
-    @media screen and (max-width: 768px) {
-      body {
-        padding-top: 120px;
-      }
-      header {
-        padding: 0.5rem 1rem;
-      }
-      .company-name {
-        font-size: 1.2rem;
-        text-align: right;
-        margin-right: 1rem;
-      }
-      .logo {
-        margin-left: 0;
-        margin-right: 1rem;
-        flex-shrink: 0;
-      }
-      .social-icons {
-        gap: 1rem;
-        flex-shrink: 0;
-      }
-      .main-nav {
-        top: 70px;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
-      .nav-toggle {
-        display: block;
-      }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: #001d3d;
-        text-align: center;
-        padding: 0;
-      }
-      .nav-links.responsive {
-        display: flex;
-      }
-      .nav-links li {
-        width: 100%;
-      }
-      .nav-links a {
-        padding: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 0;
-      }
-      .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: none;
-      }
-      .background-section {
-        min-height: 50vh;
-        margin: 1rem;
-        padding: 1rem;
-      }
-      .background-section h2 {
-        font-size: 1.8rem;
-      }
-      .background-section p {
-        font-size: 1rem;
-      }
-      .services, .contact-us, .digital-brand-section {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .contact-us {
-        margin: 2rem 1rem;
-      }
-      .contact-us h2 {
-        font-size: 2rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .company-name {
-        display: none;
-      }
-      header {
-        justify-content: space-between;
-      }
-      .digital-brand-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 20px;
-      }
-      .brand-own {
-        width: 120px;
-        height: 120px;
-      }
-      .contact-info p {
-        justify-content: flex-start;
-        text-align: right;
-      }
+    .contact-info p:hover i {
+      color: #3b82f6;
+      transform: scale(1.2);
     }
   </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header role="banner" aria-label="ناوبری اصلی">
-    <div class="social-icons" role="navigation" aria-label="شبکه‌های اجتماعی">
-      <a href="https://www.instagram.com/pouya_heavy_machinery/" aria-label="اینستاگرام" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://t.me/username" aria-label="تلگرام" target="_blank">
-        <i class="fab fa-telegram"></i>
-      </a>
-      <!-- لینک واتساپ با مقدار واقعی یا حذف -->
-    </div>
-    <div class="company-name" aria-live="polite" aria-atomic="true">
-      ماشین آلات عمران و معدن پویا
-    </div>
-    <img src="./photos/logo2.png" alt="لوگوی شرکت پویا" class="logo" onerror="this.onerror=null;this.src='https://placehold.co/100x100/003366/FFFFFF?text=Logo';" />
+
+  <header>
+    <h1>فروش چکش‌های هیدرولیکی</h1>
+    <img src="./photos/logo1.png" alt="لوگو پویا" style="height:50px;">
   </header>
-  <!-- Main Navigation Bar -->
-  <nav class="main-nav" role="navigation" aria-label="منوی اصلی">
-    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
-      <i class="fas fa-bars"></i>
-    </button>
-    <ul class="nav-links" id="mainNavLinks">
-      <li><a href="#sell-machine">فروشگاه دستگاه و چکش</a></li>
-      <li><a href="#sell-parts">فروش لوازم یدکی</a></li>
-      <li><a href="#repairs">تعمیرات تخصصی</a></li>
-      <li><a href="#production">تولید لوازم</a></li>
-      <li><a href="#contact">تماس با ما</a></li>
-    </ul>
-  </nav>
-  <!-- Modal -->
-  <div class="modal" id="infoModal" style="display:none;">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">بستن</button>
-      <h2 id="modalTitle"></h2>
-      <p id="modalText"></p>
+
+  <div class="container">
+    <section class="products">
+      <div class="card">
+        <h2>Soosan</h2>
+        <img src="./photos/soosan.png" alt="چکش هیدرولیکی Soosan SB50">
+        <p>چکش‌های قدرتمند ساخت کره برای پروژه‌های سنگین</p>
+        <button class="btn" onclick="openModal('soosan')">مشاهده مدل‌ها</button>
+      </div>
+      <div class="card">
+        <h2>Rock Pad</h2>
+        <img src="./photos/hammerH.png" alt="چکش هیدرولیکی Rock Pad RP68">
+        <p>محصول ۱۰۰٪ ایرانی؛ ساخت ماشین‌سازی اراک</p>
+        <button class="btn" onclick="openModal('rockpad')">مشاهده مدل‌ها</button>
+      </div>
+      <div class="card">
+        <h2>PWS</h2>
+        <img src="./photos/pws2.png" alt="چکش هیدرولیکی PWS GC200">
+        <p>چکش‌های اقتصادی با بهترین نسبت قیمت به کیفیت</p>
+        <button class="btn" onclick="openModal('pws')">مشاهده مدل‌ها</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="productModal" class="modal-overlay">
+    <div class="modal">
+      <button class="close" onclick="closeModal()">×</button>
+      <div id="modalContent"></div>
     </div>
   </div>
-  <main>
-    <!-- Slider Section -->
-    <section class="background-section" aria-label="اسلایدر تصاویر پروژه‌ها">
-      <div class="overlay"></div>
-      <div class="content">
-        <h2>بهترین ها همیشه اول انتخاب میشوند</h2>
-      </div>
-    </section>
-    <!-- Brands Section -->
-    <section class="digital-brand-section">
-      <div class="background-animation"></div>
-      <div class="digital-brand-grid">
-        <!-- Hyundai -->
-        <div class="digital-brand" onclick="openModal('hyundai')">
-          <div class="brand-own hyundai">
-            <div class="logo-svg hyundai">
-              <img src="./photos/Hyundai.png" alt="Hyundai Logo" />
-            </div>
-            <div class="glow"></div>
-          </div>
-          <div class="brand-name">HYUNDAI</div>
-        </div>
-        <!-- Volvo -->
-        <div class="digital-brand" onclick="openModal('volvo')">
-          <div class="brand-own volvo">
-            <div class="logo-svg volvo">
-              <img src="./photos/volvo.png" alt="Volvo Logo" />
-            </div>
-            <div class="glow"></div>
-          </div>
-          <div class="brand-name">VOLVO</div>
-        </div>
-        <!-- Komatsu -->
-        <div class="digital-brand" onclick="openModal('komatsu')">
-          <div class="brand-own komatsu">
-            <div class="logo-svg komatsu">
-              <img src="./photos/komatsu.png" alt="Komatsu Logo" />
-            </div>
-            <div class="glow"></div>
-          </div>
-          <div class="brand-name">KOMATSU</div>
-        </div>
-        <!-- Caterpillar -->
-        <div class="digital-brand" onclick="openModal('caterpillar')">
-          <div class="brand-own caterpillar">
-            <div class="logo-svg caterpillar">
-              <img src="./photos/cat.png" alt="Caterpillar Logo" />
-            </div>
-            <div class="glow"></div>
-          </div>
-          <div class="brand-name">CATERPILLAR</div>
-        </div>
-      </div>
-    </section>
-    <!-- Services Section -->
-    <section class="services" aria-label="خدمات شرکت">
-      <a href="./hammer.html" id="sell-machine" class="service-box" tabindex="0">
-        <i class="fas fa-tractor service-icon"></i>
-        <h3 class="service-title">   چکش هیدرولیکی</h3>
-        <p class="service-desc">تأمین و فروش چکش‌های صنعتی</p>
-      </a>
-      <a href="./sell.html" id="sell-parts" class="service-box" tabindex="0">
-        <i class="fas fa-cogs service-icon" aria-hidden="true"></i>
-        <h3 class="service-title">تهیه و فروش لوازم یدکی</h3>
-        <p class="service-desc">عرضه انواع لوازم یدکی و قطعات اورجینال با بهترین کیفیت و قیمت مناسب.</p>
-      </a>
-      <a href="./repairs.html" id="repairs" class="service-box" tabindex="0">
-        <i class="fas fa-wrench service-icon" aria-hidden="true"></i>
-        <h3 class="service-title">تعمیرات تخصصی</h3>
-        <p class="service-desc">ارائه خدمات تعمیرات تخصصی و نگهداری تجهیزات صنعتی با تیمی حرفه‌ای.</p>
-      </a>
-      <a href="./production.html" id="production" class="service-box" tabindex="0">
-        <i class="fas fa-industry service-icon" aria-hidden="true"></i>
-        <h3 class="service-title">تولید لوازم</h3>
-        <p class="service-desc">تولید قطعات و لوازم صنعتی با کنترل کیفیت دقیق و تکنولوژی روز دنیا.</p>
-      </a>
-    </section>
-    <!-- Contact Section -->
-    <div id="contact" class="contact-us">
-      <h2>تماس با ما</h2>
-      <p>با ما در ارتباط باشید – پاسخگوی شما هستیم</p>
-      <div class="contact-info">
-        <p><i class="fas fa-phone-alt"></i> <strong>:</strong> ۰۹۱۲۱۲۳۴۵۶۷</p>
-        <p><i class="fas fa-envelope"></i> <strong>:</strong> info@example.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> <strong>:</strong> اصفهان اتوبان ذوب‌آهن، بعد از خیابان شفق کوچه61 پلاک 122</p>
-      </div>
-    </div>
-  </main>
+
   <script>
-    // --- Mobile Navigation Toggle ---
-    function toggleNav() {
-      const navLinks = document.getElementById("mainNavLinks");
-      const navToggle = document.querySelector(".nav-toggle");
-      navLinks.classList.toggle("responsive");
-      const isExpanded = navLinks.classList.contains("responsive");
-      navToggle.setAttribute("aria-expanded", isExpanded);
+    const modal = document.getElementById('productModal');
+    const modalContent = document.getElementById('modalContent');
+
+    function openModal(product) {
+      const data = {
+        soosan: ['SB50', 'SB60', 'SB70'],
+        rockpad: ['RP68', 'RP135', 'RP155'],
+        pws: ['GC200', 'GC335']
+      };
+      const models = data[product] || [];
+      modalContent.innerHTML = `
+        <h2>مدل‌های ${product.charAt(0).toUpperCase() + product.slice(1)}</h2>
+        <ul class="model-list">${models.map(m => `<li>${m}</li>`).join('')}</ul>`;
+      modal.style.display = 'flex';
     }
-    // --- Background Image Slider ---
-    const images = [
-      'photos/banner.png',
-      'photos/banner2.png',
-      'photos/section.png',
-      'photos/download.png'
-    ];
-    let currentIndex = 0;
-    const backgroundSection = document.querySelector('.background-section');
-    function changeBackground() {
-      backgroundSection.style.opacity = '0.8';
-      setTimeout(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        backgroundSection.style.backgroundImage = `url('${images[currentIndex]}')`;
-        backgroundSection.style.opacity = '1';
-      }, 500);
-    }
-    backgroundSection.style.transition = 'background-image 0.5s ease-in-out, opacity 0.5s ease-in-out';
-    if (images.length > 0) {
-      backgroundSection.style.backgroundImage = `url('${images[0]}')`;
-    }
-    setInterval(changeBackground, 5000);
-    // --- Brand Information Modal ---
-    const brandDescriptions = {
-      hyundai: {
-        title: "هیوندای",
-        text: "فروش ماشین آلات نو و استوک"
-      },
-      volvo: {
-        title: "ولوو",
-        text: "تامین و فروش قطعات تخصصی تمامی مدل‌های Volvo شامل بیل و لودر"
-      },
-      komatsu: {
-        title: "کوماتسو",
-        text: "تامین و فروش قطعات موتور، گیربکس، پمپ مادر، هیدرولیک و زیر بند برای ماشین‌آلات لودر، بیل، بلدوزر و گریدر"
-      },
-      caterpillar: {
-        title: "کاترپیلار",
-        text: "تامین و فروش قطعات موتور، گیربکس، اکسل و پمپ هیدرولیک برای لودر و بلدوزر"
-      }
-    };
-    const modal = document.getElementById('infoModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalText = document.getElementById('modalText');
-    function openModal(key) {
-      const data = brandDescriptions[key];
-      if (data) {
-        modalTitle.innerText = data.title;
-        modalText.innerHTML = data.text;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول پس‌زمینه
-      }
-    }
+
     function closeModal() {
       modal.style.display = 'none';
-      document.body.style.overflow = ''; // بازگرداندن اسکرول
     }
-    modal.addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeModal();
-      }
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.style.display === 'flex') {
-        closeModal();
-      }
-    });
-    // اطمینان از مخفی بودن مودال هنگام بارگذاری صفحه
-    window.addEventListener('DOMContentLoaded', () => {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    });
+
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   </script>
+
+  <div class="contact-us">
+    <h2>تماس با ما</h2>
+    <p>با ما در ارتباط باشید – پاسخگوی شما هستیم</p>
+    <div class="contact-info">
+      <p><i class="fas fa-phone-alt"></i> ۰۹۱۲۱۲۳۴۵۶۷</p>
+      <p><i class="fas fa-envelope"></i> mpouya54@gmail.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> اصفهان، اتوبان ذوب‌آهن، بعد از خیابان شفق، کوچه ۶۱، پلاک ۱۲۲</p>
+    </div>
+  </div>
+
 </body>
 </html>
