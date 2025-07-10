@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    :root {
+  :root {
       --primary-dark: #001d3d;
       --primary-medium: #003566;
       --accent-light: #70a1ff;
@@ -36,6 +36,7 @@
       padding-top: 80px;
     }
 
+    /* Header */
     .main-header {
       position: fixed;
       top: 0;
@@ -70,6 +71,7 @@
       color: var(--primary-dark);
     }
 
+    /* Navbar */
     .navbar {
       display: flex;
       align-items: center;
@@ -91,8 +93,10 @@
       color: var(--primary-dark);
       font-weight: 600;
       font-size: 1.1rem;
+      cursor: pointer;
     }
 
+    /* Dropdown */
     .dropdown {
       position: absolute;
       top: 100%;
@@ -144,6 +148,7 @@
       border-radius: 6px;
       transition: all 0.3s ease;
       font-weight: 500;
+      cursor: pointer;
     }
 
     .dropdown-list a:hover {
@@ -152,6 +157,7 @@
       transform: translateX(-5px);
     }
 
+    /* Social Icons in Header */
     .header-social-icons {
       display: flex;
       gap: 1rem;
@@ -164,10 +170,88 @@
       color: var(--primary-medium);
       font-size: 1.4rem;
       transition: color 0.3s ease;
+      cursor: pointer;
     }
 
     .header-social-icons a:hover {
       color: var(--accent-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .main-header {
+        padding: 0 1rem;
+      }
+      .company-title {
+        font-size: 1.3rem;
+      }
+      .nav-link {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+      }
+      .header-social-icons {
+        margin-left: 1rem;
+        padding-left: 1rem;
+        gap: 0.7rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        position: relative;
+      }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--background-light);
+        position: absolute;
+        top: 80px;
+        right: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-radius: 0 0 10px 10px;
+        z-index: 999;
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      .nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--background-grey);
+      }
+      .dropdown {
+        position: static;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        background: none;
+        box-shadow: none;
+      }
+      .dropdown-content {
+        padding: 0 1.5rem 1rem;
+      }
+      .dropdown-list a {
+        padding: 0.75rem 0;
+      }
+      .header-social-icons {
+        margin: 1rem 0 0;
+        padding: 0;
+        border-left: none;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .company-title {
+        font-size: 1.1rem;
+      }
+      .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+      .header-social-icons {
+        display: none;
+      }
     }
 
     /* محتوا */
@@ -388,31 +472,38 @@
 </head>
 <body>
   <header class="main-header">
-    <div class="header-logo-container">
-      <img src="./photos/logo2.png" alt="لوگوی شرکت پویا" class="logo" />
-      <h1 class="company-title">عمران و معدن پویا</h1>
-    </div>
-    <nav class="navbar">
-      <ul class="nav-menu">
-        <li class="nav-item">
-          <a href="#" class="nav-link">فروشگاه</a>
-          <div class="dropdown">
-            <div class="dropdown-content">
-              <h3 class="dropdown-title">محصولات فروشگاه</h3>
-              <p class="dropdown-text">مجموعه کاملی از بهترین محصولات را در فروشگاه ما پیدا کنید.</p>
-              <ul class="dropdown-list">
-    
-              </ul>
-            </div>
+  <div class="header-logo-container">
+    <img src="./photos/logo2.png" alt="لوگوی شرکت پویا" class="logo" />
+    <h1 class="company-title">عمران و معدن پویا</h1>
+  </div>
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="#" class="nav-link">فروشگاه</a>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <h3 class="dropdown-title">محصولات فروشگاه</h3>
+            <p class="dropdown-text">مجموعه کاملی از بهترین محصولات را در فروشگاه ما پیدا کنید.</p>
+            <ul class="dropdown-list">
+              <li><a href="/devicesell.html">ماشین آلات صنعتی</a></li>
+              <li><a href="./parts.html">قطعات یدکی</a></li>
+              <li><a href="./selloil.html">روغن</a></li>
+              <li><a href="./hammer.html">چکش صنعتی</a></li>
+            </ul>
           </div>
-        </li>
-       
-      </ul>
-  
-      </div>
-    </nav>
-  </header>
-
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">درباره ما</a>
+      </li>
+      <li class="nav-item">
+        <a href="#contact" class="nav-link">تماس با ما</a>
+      </li>
+    </ul>
+    <div class="header-social-icons">
+      <!-- اگر آیکون شبکه‌های اجتماعی دارید اینجا قرار دهید -->
+    </div>
+  </nav>
   <main>
     <h2 class="section-title">محصولات ویژه</h2>
     <section class="product-grid" aria-label="محصولات ویژه">
