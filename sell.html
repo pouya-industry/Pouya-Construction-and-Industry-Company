@@ -38,7 +38,7 @@
       background: #f8f9fa;
       border-radius: 10px;
       padding: 1.5rem;
-      width: 400px; /* بزرگ‌تر شده */
+      width: 400px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
@@ -67,86 +67,30 @@
     }
     .card img {
       width: 100%;
-      height: 280px; /* بزرگ‌تر شده */
+      height: 280px;
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 1rem;
       user-select: none;
     }
-    .btn {
+    .btn-link {
+      display: inline-block;
       background: #70a1ff;
       color: #001d3d;
       padding: 0.8rem 1.6rem;
-      border: none;
       border-radius: 50px;
-      cursor: pointer;
-      align-self: center;
-      transition: background-color 0.3s ease;
       font-weight: 600;
       font-size: 1rem;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s ease;
       user-select: none;
+      cursor: pointer;
     }
-    .btn:hover, .btn:focus {
+    .btn-link:hover, .btn-link:focus {
       background: #4a7dfd;
       outline: none;
-    }
-    /* Modal styles */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-    .modal {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 400px;
-      position: relative;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.25);
-      user-select: text;
-    }
-    .modal h2 {
-      margin-bottom: 1rem;
-      font-weight: 700;
       color: #001d3d;
-    }
-    .model-list {
-      list-style: none;
-      text-align: right;
-      padding: 0;
-      max-height: 250px;
-      overflow-y: auto;
-      margin: 0 auto;
-      width: 80%;
-      color: #333;
-      font-size: 1.1rem;
-    }
-    .model-list li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #ddd;
-    }
-    .close {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      font-weight: 700;
-      color: #333;
-      user-select: none;
-    }
-    .close:hover, .close:focus {
-      color: #0077ff;
-      outline: none;
     }
     /* Contact us */
     .contact-us {
@@ -213,11 +157,10 @@
         max-width: 400px;
       }
       .card img {
-        height: 250px; /* ارتفاع تصویر را کمی کمتر در موبایل */
+        height: 250px;
       }
     }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -232,58 +175,16 @@
         <h2>قطعات یدکی</h2>
         <img src="./photos/parts.png" alt="تصویر قطعات یدکی">
         <p>قطعات با کیفیت بالا و مناسب برای انواع ماشین‌آلات صنعتی و معدنی.</p>
-        <button class="btn" onclick="openModal('parts')">مشاهده مدل‌ها</button>
+        <a href="parts.html" class="btn-link">مشاهده مدل‌ها</a>
       </div>
       <div class="card">
         <h2>روغن صنعتی</h2>
         <img src="./photos/oil.png" alt="تصویر روغن صنعتی">
         <p>روغن‌های با کیفیت جهت افزایش عمر و کارایی ماشین‌آلات صنعتی.</p>
-        <button class="btn" onclick="openModal('oil')">مشاهده مدل‌ها</button>
+        <a href="oil.html" class="btn-link">مشاهده مدل‌ها</a>
       </div>
     </section>
   </div>
-
-  <div id="productModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
-    <div class="modal">
-      <button class="close" aria-label="بستن پنجره" onclick="closeModal()">×</button>
-      <div id="modalContent"></div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('productModal');
-    const modalContent = document.getElementById('modalContent');
-
-    function openModal(product) {
-      const data = {
-        parts: ['مدل P100', 'مدل P200', 'مدل P300'],
-        oil: ['روغن OX1', 'روغن OX2', 'روغن OX3']
-      };
-      const models = data[product] || [];
-      const productName = product === 'parts' ? 'قطعات یدکی' : 'روغن صنعتی';
-      modalContent.innerHTML = `
-        <h2 id="modalTitle">مدل‌های ${productName}</h2>
-        <ul class="model-list">${models.map(m => `<li>${m}</li>`).join('')}</ul>`;
-      modal.style.display = 'flex';
-      modal.focus();
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-    }
-
-    window.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && modal.style.display === 'flex') {
-        closeModal();
-      }
-    });
-
-    window.addEventListener('click', e => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-  </script>
 
   <div class="contact-us" id="contact">
     <h2>تماس با ما</h2>
@@ -295,5 +196,6 @@
     </div>
   </div>
 
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
