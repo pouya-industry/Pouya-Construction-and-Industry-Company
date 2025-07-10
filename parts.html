@@ -2,55 +2,32 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>برندها و قطعات</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- فونت Vazirmatn با وزن 500 و 700 -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --primary-dark: #001d3d;
-      --primary-medium: #003566;
-      --accent-light: #70a1ff;
-      --text-light: #f0f4f8;
-      --text-dark: #0d1b2a;
-      --background-light: #ffffff;
-      --background-grey: #f8f9fa;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* استایل پایه بدنه و هدر مشابه نمونه دوم */
     body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: var(--background-light);
-      color: var(--text-dark);
+      font-family: "Vazirmatn", sans-serif;
+      background: #f0f4f8;
+      color: #001d3d;
+      padding: 60px 20px 40px;
+      margin: 0;
       line-height: 1.7;
-      padding-top: 80px;
     }
 
-    /* --- Header & Navigation --- */
-    .main-header {
-      position: fixed;
+    header.main-header {
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
+      background: linear-gradient(90deg, #00122e, #003366);
+      color: #fff;
+      padding: 1rem 2rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 0 2rem;
-      height: 80px;
-      background-color: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       z-index: 1000;
-      transition: all 0.3s ease;
     }
 
     .header-logo-container {
@@ -62,9 +39,10 @@
 
     .logo {
       height: 50px;
-      width: auto;
-      border-radius: 8px;
+      border-radius: 10px;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .logo:hover {
@@ -72,13 +50,15 @@
     }
 
     .company-title {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: var(--primary-dark);
+      margin: 0;
       white-space: nowrap;
+      user-select: none;
     }
 
-    .navbar {
+    /* ناوبری */
+    nav.navbar {
       display: flex;
       align-items: center;
     }
@@ -86,7 +66,9 @@
     .nav-menu {
       list-style: none;
       display: flex;
-      gap: 0.5rem;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-item {
@@ -94,43 +76,28 @@
     }
 
     .nav-link {
-      display: block;
-      padding: 1rem 1.2rem;
+      color: #fff;
       text-decoration: none;
-      color: var(--primary-dark);
       font-weight: 600;
       font-size: 1rem;
-      position: relative;
+      padding: 0.5rem 1rem;
+      display: block;
       transition: color 0.3s ease;
       white-space: nowrap;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 10px;
-      right: 1.2rem;
-      width: 0;
-      height: 2px;
-      background-color: var(--accent-light);
-      transition: width 0.3s ease;
+      cursor: pointer;
     }
 
     .nav-link:hover,
     .nav-item:hover > .nav-link {
-      color: var(--accent-light);
+      color: #70a1ff;
     }
 
-    .nav-link:hover::after,
-    .nav-item:hover > .nav-link::after {
-      width: calc(100% - 2.4rem);
-    }
-
+    /* زیرمنو */
     .dropdown {
       position: absolute;
       top: 100%;
       right: 0;
-      background: var(--background-light);
+      background: #fff;
       min-width: 280px;
       border-radius: 8px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -138,7 +105,8 @@
       visibility: hidden;
       transform: translateY(10px);
       transition: all 0.3s ease;
-      border-top: 3px solid var(--accent-light);
+      border-top: 3px solid #70a1ff;
+      z-index: 1500;
     }
 
     .nav-item:hover .dropdown {
@@ -148,66 +116,50 @@
     }
 
     .dropdown-content {
-      padding: 1.5rem;
+      padding: 1rem 1.5rem;
+      color: #333;
     }
 
     .dropdown-title {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--primary-dark);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+      color: #001d3d;
     }
 
     .dropdown-text {
-      color: #666;
       font-size: 0.9rem;
       margin-bottom: 1rem;
-      line-height: 1.5;
+      line-height: 1.4;
+      color: #666;
     }
 
     .dropdown-list {
       list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .dropdown-list a {
-      text-decoration: none;
-      color: var(--primary-medium);
       display: block;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      transition: all 0.3s ease;
+      padding: 0.5rem 0.8rem;
+      color: #003566;
       font-weight: 500;
       font-size: 0.9rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
     .dropdown-list a:hover {
-      background-color: var(--background-grey);
-      color: var(--accent-light);
+      background-color: #f8f9fa;
+      color: #70a1ff;
       transform: translateX(-5px);
     }
 
-    .header-social-icons {
-      display: flex;
-      gap: 1rem;
-      margin-left: 1.5rem;
-      border-left: 1px solid #ddd;
-      padding-left: 1.5rem;
-    }
-
-    .header-social-icons a {
-      color: var(--primary-medium);
-      font-size: 1.2rem;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .header-social-icons a:hover {
-      color: var(--accent-light);
-      transform: translateY(-2px);
-    }
-
-    /* Mobile Menu Toggle */
+    /* دکمه منوی موبایل */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -220,10 +172,10 @@
     .menu-toggle span {
       width: 25px;
       height: 3px;
-      background-color: var(--primary-dark);
+      background-color: #fff;
       margin: 3px 0;
-      transition: 0.3s;
       border-radius: 2px;
+      transition: 0.3s;
     }
 
     /* --- Main Content --- */
@@ -236,7 +188,7 @@
     .hero-section {
       text-align: center;
       margin-bottom: 4rem;
-      color: var(--primary-dark);
+      color: #001d3d;
     }
 
     .hero-title {
@@ -250,7 +202,7 @@
       font-size: 1.3rem;
       opacity: 0.8;
       margin-bottom: 2rem;
-      color: var(--primary-medium);
+      color: #003566;
     }
 
     .grid {
@@ -268,6 +220,7 @@
       overflow: hidden;
       transition: all 0.3s ease;
       border: 1px solid #f0f0f0;
+      cursor: default;
     }
 
     .card:hover {
@@ -280,6 +233,7 @@
       height: 200px;
       object-fit: cover;
       transition: transform 0.3s ease;
+      user-select: none;
     }
 
     .card:hover img {
@@ -294,12 +248,13 @@
     .card-content h3 {
       margin-bottom: 1rem;
       font-size: 1.3rem;
-      color: var(--primary-dark);
+      color: #001d3d;
       font-weight: 700;
+      user-select: none;
     }
 
     .card-content button {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+      background: linear-gradient(135deg, #001d3d, #003566);
       color: white;
       border: none;
       padding: 0.75rem 1.5rem;
@@ -309,14 +264,16 @@
       font-size: 1rem;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0,29,61,0.3);
+      user-select: none;
     }
 
     .card-content button:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0,29,61,0.4);
-      background: linear-gradient(135deg, var(--primary-medium), var(--accent-light));
+      background: linear-gradient(135deg, #003566, #70a1ff);
     }
 
+    /* Modal */
     .modal {
       position: fixed;
       top: 0;
@@ -343,6 +300,7 @@
       position: relative;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       animation: modalSlideIn 0.3s ease-out;
+      user-select: text;
     }
 
     @keyframes modalSlideIn {
@@ -358,16 +316,18 @@
 
     .modal-content h2 {
       margin-bottom: 1.5rem;
-      color: var(--primary-dark);
+      color: #001d3d;
       font-size: 1.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--accent-light);
+      border-bottom: 2px solid #70a1ff;
+      user-select: text;
     }
 
     .modal-content p {
       line-height: 1.8;
       color: #555;
       white-space: pre-line;
+      user-select: text;
     }
 
     .close-btn {
@@ -382,256 +342,94 @@
       left: 15px;
       font-weight: 600;
       transition: background 0.3s ease;
+      user-select: none;
     }
 
     .close-btn:hover {
       background: #c82333;
     }
 
-    /* --- Responsive Design --- */
-    
-    /* Large Desktop (1200px+) */
-    @media (min-width: 1200px) {
-      .grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-      
-      .hero-title {
-        font-size: 3.5rem;
-      }
-    }
-
-    /* Desktop (992px - 1199px) */
-    @media (max-width: 1199px) {
-      .container {
-        padding: 2.5rem 1.5rem;
-      }
-      
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* Tablet (768px - 991px) */
-    @media (max-width: 991px) {
-      .main-header {
-        padding: 0 1.5rem;
-      }
-      
-      .company-title {
-        font-size: 1.2rem;
-      }
-      
-      .nav-menu {
-        gap: 0.2rem;
-      }
-      
-      .nav-link {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-      }
-      
-      .header-social-icons {
-        gap: 0.8rem;
-        margin-left: 1rem;
-        padding-left: 1rem;
-      }
-      
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-      
-      .card img {
-        height: 180px;
-      }
-    }
-
-    /* Mobile Large (576px - 767px) */
+    /* Responsive */
     @media (max-width: 767px) {
       body {
         padding-top: 70px;
       }
-      
-      .main-header {
+      header.main-header {
+        flex-wrap: wrap;
         height: 70px;
         padding: 0 1rem;
-        flex-wrap: wrap;
       }
-      
       .logo {
         height: 40px;
       }
-      
       .company-title {
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
-      
       .nav-menu {
         position: fixed;
         top: 70px;
         left: 0;
         width: 100%;
-        background: white;
+        background: #00122e;
         flex-direction: column;
         padding: 1rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         transform: translateX(-100%);
         transition: transform 0.3s ease;
+        z-index: 1100;
       }
-      
       .nav-menu.active {
         transform: translateX(0);
       }
-      
       .nav-item {
         width: 100%;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #003366;
       }
-      
       .nav-link {
         padding: 1rem 0;
         text-align: right;
+        color: #70a1ff;
       }
-      
       .dropdown {
         position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
         box-shadow: none;
         border-top: none;
         border-radius: 0;
-        background: #f8f9fa;
+        background: #002244;
         margin-top: 0.5rem;
       }
-      
+      .dropdown-content {
+        padding: 1rem;
+        color: #cce0ff;
+      }
+      .dropdown-list a {
+        color: #a0c4ff;
+      }
+      .dropdown-list a:hover {
+        background-color: #003366;
+        color: #70a1ff;
+        transform: none;
+      }
       .menu-toggle {
         display: flex;
       }
-      
-      .header-social-icons {
-        display: none;
+    }
+
+    @media (max-width: 480px) {
+      .company-title {
+        font-size: 1rem;
       }
-      
-      .container {
-        padding: 2rem 1rem;
-      }
-      
       .hero-title {
         font-size: 2rem;
       }
-      
       .hero-subtitle {
-        font-size: 1rem;
-      }
-      
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .card img {
-        height: 200px;
-      }
-      
-      .modal-content {
-        margin: 1rem;
-        padding: 1.5rem;
-      }
-    }
-
-    /* Mobile Small (up to 575px) */
-    @media (max-width: 575px) {
-      .header-logo-container {
-        gap: 0.5rem;
-      }
-      
-      .logo {
-        height: 35px;
-      }
-      
-      .company-title {
-        font-size: 0.9rem;
-      }
-      
-      .hero-title {
-        font-size: 1.8rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 0.9rem;
-      }
-      
-      .card-content {
-        padding: 1rem;
-      }
-      
-      .card-content h3 {
         font-size: 1.1rem;
       }
-      
-      .card-content button {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-      }
-      
-      .modal-content {
-        padding: 1rem;
-      }
-      
-      .modal-content h2 {
-        font-size: 1.3rem;
-      }
-    }
-
-    /* Extra Small Mobile (up to 320px) */
-    @media (max-width: 320px) {
-      .company-title {
-        display: none;
-      }
-      
-      .hero-title {
-        font-size: 1.5rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 0.8rem;
-      }
-      
       .card img {
-        height: 150px;
-      }
-      
-      .card-content {
-        padding: 0.8rem;
-      }
-    }
-
-    /* Landscape Mobile */
-    @media (max-height: 500px) and (orientation: landscape) {
-      .hero-title {
-        font-size: 1.8rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-      
-      .container {
-        padding: 1.5rem 1rem;
-      }
-      
-      .modal-content {
-        max-height: 70vh;
+        height: 180px;
       }
     }
   </style>
@@ -643,17 +441,17 @@
       <h1 class="company-title">عمران و معدن پویا</h1>
     </div>
     
-    <button class="menu-toggle" onclick="toggleMenu()">
+    <button class="menu-toggle" aria-label="باز کردن منو" onclick="toggleMenu()">
       <span></span>
       <span></span>
       <span></span>
     </button>
     
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="منوی اصلی">
       <ul class="nav-menu" id="navMenu">
         <li class="nav-item">
-          <a href="#" class="nav-link">فروشگاه</a>
-          <div class="dropdown">
+          <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">فروشگاه</a>
+          <div class="dropdown" role="menu" aria-label="زیرمنوی فروشگاه">
             <div class="dropdown-content">
               <h3 class="dropdown-title">محصولات فروشگاه</h3>
               <p class="dropdown-text">مجموعه کاملی از بهترین محصولات را در فروشگاه ما پیدا کنید.</p>
@@ -667,8 +465,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">درباره ما</a>
-          <div class="dropdown">
+          <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">درباره ما</a>
+          <div class="dropdown" role="menu" aria-label="زیرمنوی درباره ما">
             <div class="dropdown-content">
               <h3 class="dropdown-title">درباره شرکت ما</h3>
               <p class="dropdown-text">ما یک شرکت پیشرو در زمینه ارائه خدمات و محصولات باکیفیت هستیم.</p>
@@ -696,74 +494,74 @@
 
     <div class="grid">
       <div class="card">
-        <img src="./photos/cat.png" alt="Caterpillar">
+        <img src="./photos/cat.png" alt="Caterpillar" />
         <div class="card-content">
           <h3>Caterpillar</h3>
-          <button onclick="openModal('caterpillar')">مشاهده جزئیات</button>
+          <button onclick="openModal('caterpillar')" aria-label="مشاهده جزئیات Caterpillar">مشاهده جزئیات</button>
         </div>
       </div>
       
       <div class="card">
-        <img src="./photos/volvo.png" alt="Volvo">
+        <img src="./photos/volvo.png" alt="Volvo" />
         <div class="card-content">
           <h3>Volvo</h3>
-          <button onclick="openModal('volvo')">مشاهده جزئیات</button>
+          <button onclick="openModal('volvo')" aria-label="مشاهده جزئیات Volvo">مشاهده جزئیات</button>
         </div>
       </div>
       
       <div class="card">
-        <img src="./photos/komatsu.png" alt="Komatsu">
+        <img src="./photos/komatsu.png" alt="Komatsu" />
         <div class="card-content">
           <h3>Komatsu</h3>
-          <button onclick="openModal('komatsu')">مشاهده جزئیات</button>
+          <button onclick="openModal('komatsu')" aria-label="مشاهده جزئیات Komatsu">مشاهده جزئیات</button>
         </div>
       </div>
       
       <div class="card">
-        <img src="./photos/Hyundai.png" alt="Hyundai">
+        <img src="./photos/Hyundai.png" alt="Hyundai" />
         <div class="card-content">
           <h3>Hyundai</h3>
-          <button onclick="openModal('hyundai')">مشاهده جزئیات</button>
+          <button onclick="openModal('hyundai')" aria-label="مشاهده جزئیات Hyundai">مشاهده جزئیات</button>
         </div>
       </div>
       
       <div class="card">
-        <img src="chinese.jpg" alt="ماشین آلات چینی">
+        <img src="chinese.jpg" alt="ماشین آلات چینی" />
         <div class="card-content">
           <h3>ماشین آلات چینی</h3>
-          <button onclick="openModal('chinese')">مشاهده جزئیات</button>
+          <button onclick="openModal('chinese')" aria-label="مشاهده جزئیات ماشین آلات چینی">مشاهده جزئیات</button>
         </div>
       </div>
       
       <div class="card">
-        <img src="./photos/mitsubishi.png" alt="Mitsubishi">
+        <img src="./photos/mitsubishi.png" alt="Mitsubishi" />
         <div class="card-content">
           <h3>Mitsubishi</h3>
-          <button onclick="openModal('mitsubishi')">مشاهده جزئیات</button>
+          <button onclick="openModal('mitsubishi')" aria-label="مشاهده جزئیات Mitsubishi">مشاهده جزئیات</button>
         </div>
       </div>
       
       <div class="card">
-        <img src="deutz.jpg" alt="Deutz">
+        <img src="deutz.jpg" alt="Deutz" />
         <div class="card-content">
           <h3>Deutz</h3>
-          <button onclick="openModal('deutz')">مشاهده جزئیات</button>
+          <button onclick="openModal('deutz')" aria-label="مشاهده جزئیات Deutz">مشاهده جزئیات</button>
         </div>
       </div>
       
       <div class="card">
-        <img src="cummins.jpg" alt="Cummins">
+        <img src="cummins.jpg" alt="Cummins" />
         <div class="card-content">
           <h3>Cummins</h3>
-          <button onclick="openModal('cummins')">مشاهده جزئیات</button>
+          <button onclick="openModal('cummins')" aria-label="مشاهده جزئیات Cummins">مشاهده جزئیات</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal" id="infoModal">
+  <div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">×</button>
+      <button class="close-btn" aria-label="بستن پنجره" onclick="closeModal()">×</button>
       <h2 id="modalTitle"></h2>
       <p id="modalText"></p>
     </div>
@@ -850,7 +648,9 @@
     };
 
     function openModal(brandKey) {
-      const title = document.querySelector(`[onclick="openModal('${brandKey}')"]`).previousElementSibling.innerText;
+      const button = document.querySelector(`[onclick="openModal('${brandKey}')"]`);
+      if (!button) return;
+      const title = button.previousElementSibling.innerText || '';
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalText').innerText = descriptions[brandKey] || 'اطلاعاتی در دسترس نیست.';
       document.getElementById('infoModal').style.display = 'flex';
@@ -867,11 +667,19 @@
       navMenu.classList.toggle('active');
     }
 
-    // Close modal when clicking outside
+    // بستن مدال با کلیک خارج از محتوا
     document.getElementById('infoModal').addEventListener('click', function(e) {
       if (e.target === this) {
         closeModal();
       }
     });
 
-   
+    // بستن مدال با کلید Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
