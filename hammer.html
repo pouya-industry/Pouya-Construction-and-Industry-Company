@@ -7,143 +7,230 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "Vazirmatn", sans-serif; background: #fff; min-height: 100vh; color: #001d3d; overflow-x: hidden; }
-    header { position: sticky; top: 0; background: linear-gradient(90deg, #00122e, #003366); color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000; }
-    .logo { height: 50px; margin-left: 1.5rem; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5)); border-radius: 10px; box-shadow: 0 0 15px rgba(255,255,255,0.7); }
-    .container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; }
-    .hero-section { text-align: center; margin-bottom: 4rem; }
-    .hero-title { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-    .hero-subtitle { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-    .card { background: rgba(255,255,255,0.95); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; backdrop-filter: blur(10px); position: relative; }
-    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2); }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
-    .card-image { height: 300px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .card-image::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%); transform: translateX(-100%); transition: transform 0.6s ease; }
-    .card:hover .card-image::before { transform: translateX(100%); }
-    .card img { height: 250px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); transition: transform 0.3s ease; }
-    .card:hover img { transform: scale(1.05); }
-    .card-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
-    .card-content h2 { font-size: 1.8rem; margin-bottom: 1rem; color: #1a1a2e; font-weight: 700; }
-    .card-content p { color: #666; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
-    .btn { background: #70a1ff; color: #001d3d; border: none; padding: 1rem 2rem; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; align-self: flex-start; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255,255,255,0.4); position: relative; overflow: hidden; }
-    .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s ease; }
-    .btn:hover::before { left: 100%; }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(44,58,117,0.6); }
-    .modal-overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; backdrop-filter: blur(5px); }
-    .modal { background: white; padding: 3rem; border-radius: 20px; max-width: 80vw; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.3); animation: modalSlideIn 0.3s ease; }
-    @keyframes modalSlideIn { from { opacity: 0; transform: scale(0.8) translateY(-50px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-    .close { position: absolute; top: 15px; left: 20px; font-size: 2rem; cursor: pointer; color: #666; transition: color 0.3s ease; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(0,0,0,0.1); }
-    .close:hover { color: #333; background: rgba(0,0,0,0.2); }
-    .modal h2 { font-size: 2.2rem; color: #1a1a2e; margin-bottom: 2rem; font-weight: 700; }
-    .modal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .modal-item { background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 1.5rem; border-radius: 15px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-    .modal-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-    .modal-item img { width: 150px; height: 120px; object-fit: contain; border-radius: 10px; margin-bottom: 1rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
-    .modal-item span { display: block; font-weight: 700; font-size: 1.2rem; color: #1a1a2e; }
-    @media (max-width: 768px) {
-      .hero-title { font-size: 2rem; }
-      .products { grid-template-columns: 1fr; }
-      .modal { padding: 2rem; max-width: 95vw; }
-      .modal-grid { grid-template-columns: 1fr; }
+    body { font-family: "Vazirmatn", sans-serif; background: #fff; color: #001d3d; }
+    header { position: sticky; top: 0; background: linear-gradient(90deg, #00122e, #003366); color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .container { max-width: 1400px; margin: auto; padding: 2rem; }
+    .products {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 300px; /* عرض ثابت برای یکنواختی */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card h2 {
+      margin-bottom: .5rem;
+      text-align: center;
+      width: 100%;
+    }
+    .card p {
+      margin-bottom: 1rem;
+      text-align: center;
+      width: 100%;
+    }
+    .card img {
+      width: 100%;
+      height: 200px; /* ارتفاع ثابت برای یکنواختی */
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      background: #70a1ff;
+      color: #001d3d;
+      padding: .8rem 1.6rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      align-self: center;
+      transition: background-color 0.3s ease;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #4a7dfd;
+    }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+    .modal {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.25);
+    }
+    .modal h2 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .model-list {
+      list-style: none;
+      text-align: right;
+      padding: 0;
+      max-height: 250px;
+      overflow-y: auto;
+      margin: 0 auto;
+      width: 80%;
+    }
+    .model-list li {
+      padding: .5rem 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 1.1rem;
+    }
+    .close {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-weight: 700;
+      color: #333;
+    }
+    .contact-us {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #fff;
+      max-width: 750px;
+      margin: 4rem auto;
+      padding: 3rem 2.5rem;
+      border-radius: 25px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.6);
+      font-family: 'Vazirmatn', sans-serif;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .contact-us h2 {
+      font-size: 2.7rem;
+      margin-bottom: 1.3rem;
+      font-weight: 900;
+      color: #ffffff;
+    }
+    .contact-us p {
+      font-size: 1.2rem;
+      color: #a5b4fc;
+      margin-bottom: 2rem;
+    }
+    .contact-info {
+      margin-top: 2rem;
+    }
+    .contact-info p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin: 1rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      transition: all 0.3s ease;
+      max-width: 500px;
+    }
+    .contact-info p:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .contact-info i {
+      color: #60a5fa;
+      font-size: 1.3rem;
+      transition: transform 0.3s ease, color 0.3s;
+    }
+    .contact-info p:hover i {
+      color: #3b82f6;
+      transform: scale(1.2);
     }
   </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
   <header>
-    <h1>فروش چکش‌های هیدرولیکی </h1>
-    <img src="./photos/logo1.png" alt="لوگو پویا" class="logo" />
+    <h1>فروش چکش‌های هیدرولیکی</h1>
+    <img src="./photos/logo1.png" alt="لوگو پویا" style="height:50px;">
   </header>
 
   <div class="container">
-    <section class="hero-section">
-      <h1 class="hero-title">چکش‌های هیدرولیکی </h1>
-      <p class="hero-subtitle">بهترین و با کیفیت‌ترین چکش‌های هیدرولیکی را از ما بخواهید</p>
-    </section>
-
     <section class="products">
       <div class="card">
-        <div class="card-image"><img src="./photos/soosan.png" alt="چکش SOOSAN"></div>
-        <div class="card-content">
-          <h2>چکش هیدرولیکی Soosan</h2>
-          <p>چکش‌های قدرتمند ساخت کره با تکنولوژی پیشرفته برای پروژه‌های سنگین</p>
-          <button class="btn" onclick="openModal('soosan')">مشاهده مدل‌ها</button>
-        </div>
+        <h2>Soosan</h2>
+        <img src="./photos/soosan.png" alt="چکش هیدرولیکی Soosan SB50">
+        <p>چکش‌های قدرتمند ساخت کره برای پروژه‌های سنگین</p>
+        <button class="btn" onclick="openModal('soosan')">مشاهده مدل‌ها</button>
       </div>
       <div class="card">
-        <div class="card-image"><img src="./photos/hammerH.png" alt="چکش Rock Pad"></div>
-        <div class="card-content">
-          <h2>چکش هیدرولیکی Rock Pad</h2>
-          <p>محصول ۱۰۰٪ ایرانی؛ ساخت ماشین‌سازی اراک</p>
-          <button class="btn" onclick="openModal('rockpad')">مشاهده مدل‌ها</button>
-        </div>
+        <h2>Rock Pad</h2>
+        <img src="./photos/hammerH.png" alt="چکش هیدرولیکی Rock Pad RP68">
+        <p>محصول ۱۰۰٪ ایرانی؛ ساخت ماشین‌سازی اراک</p>
+        <button class="btn" onclick="openModal('rockpad')">مشاهده مدل‌ها</button>
       </div>
       <div class="card">
-        <div class="card-image"><img src="./photos/pws2.png" alt="چکش PWS"></div>
-        <div class="card-content">
-          <h2>چکش هیدرولیکی PWS</h2>
-          <p>چکش‌های اقتصادی با بهترین نسبت قیمت به کیفیت</p>
-          <button class="btn" onclick="openModal('pws')">مشاهده مدل‌ها</button>
-        </div>
+        <h2>PWS</h2>
+        <img src="./photos/pws2.png" alt="چکش هیدرولیکی PWS GC200">
+        <p>چکش‌های اقتصادی با بهترین نسبت قیمت به کیفیت</p>
+        <button class="btn" onclick="openModal('pws')">مشاهده مدل‌ها</button>
       </div>
     </section>
   </div>
 
   <div id="productModal" class="modal-overlay">
     <div class="modal">
-      <span class="close" onclick="closeModal()">&times;</span>
+      <button class="close" onclick="closeModal()">×</button>
       <div id="modalContent"></div>
     </div>
   </div>
 
   <script>
-    const modal = document.getElementById("productModal");
-    const modalContent = document.getElementById("modalContent");
+    const modal = document.getElementById('productModal');
+    const modalContent = document.getElementById('modalContent');
 
     function openModal(product) {
-      console.log("openModal called with:", product);
-      let content = '';
-
-      if (product === 'soosan') {
-        content = `
-          <h2>مدل‌های Soosan</h2>
-          <div class="modal-grid">
-          
-          </div>`;
-      } else if (product === 'rockpad') {
-        content = `
-          <h2>مدل‌های Rock Pad</h2>
-          <div class="modal-grid">
-           
-          </div>`;
-      } else if (product === 'pws') {
-        content = `
-          <h2>مدل‌های PWS</h2>
-          <div class="modal-grid">
-           
-          </div>`;
-      } else {
-        console.warn("Unknown product:", product);
-        return;
-      }
-
-      modalContent.innerHTML = content;
-      modal.style.display = "flex";
-      document.body.style.overflow = "hidden";
+      const data = {
+        soosan: ['SB50', 'SB60', 'SB70'],
+        rockpad: ['RP68', 'RP135', 'RP155'],
+        pws: ['GC200', 'GC335']
+      };
+      const models = data[product] || [];
+      modalContent.innerHTML = `
+        <h2>مدل‌های ${product.charAt(0).toUpperCase() + product.slice(1)}</h2>
+        <ul class="model-list">${models.map(m => `<li>${m}</li>`).join('')}</ul>`;
+      modal.style.display = 'flex';
     }
 
     function closeModal() {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
+      modal.style.display = 'none';
     }
 
-    window.onclick = event => {
-      if (event.target === modal) closeModal();
-    };
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeModal();
-    });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   </script>
+
+  <div class="contact-us">
+    <h2>تماس با ما</h2>
+    <p>با ما در ارتباط باشید – پاسخگوی شما هستیم</p>
+    <div class="contact-info">
+      <p><i class="fas fa-phone-alt"></i> ۰۹۱۲۱۲۳۴۵۶۷</p>
+      <p><i class="fas fa-envelope"></i> mpouya54@gmail.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> اصفهان، اتوبان ذوب‌آهن، بعد از خیابان شفق، کوچه ۶۱، پلاک ۱۲۲</p>
+    </div>
+  </div>
+
 </body>
 </html>
