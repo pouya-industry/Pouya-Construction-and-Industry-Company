@@ -51,18 +51,30 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.3s ease;
+      /* حفظ نسبت ابعاد مناسب */
+      aspect-ratio: 4 / 3;
     }
 
+    /* برای کنترل بهتر ارتفاع تصویر و نمایش کامل */
     .card img {
-      height: 220px;
-      object-fit: cover;
       width: 100%;
+      height: auto;
+      max-height: 220px;
+      object-fit: contain; /* تغییر به contain برای دیدن تمام تصویر */
+      background-color: #e6f0ff; /* رنگ زمینه برای فضای خالی */
       border-radius: 12px 12px 0 0;
+      display: block;
+      margin: 0 auto;
+      padding: 10px; /* فاصله داخلی برای بهتر دیده شدن */
+      transition: transform 0.3s ease;
     }
 
     .card-content {
       padding: 1rem 1.2rem;
       flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .card-content h2 {
@@ -73,6 +85,7 @@
     .card-content p {
       font-size: 1rem;
       margin-bottom: 1rem;
+      flex-grow: 1;
     }
 
     .btn {
@@ -84,15 +97,26 @@
       font-weight: 600;
       display: inline-block;
       transition: background 0.3s;
+      text-align: center;
+      user-select: none;
     }
 
-    .btn:hover {
+    .btn:hover,
+    .btn:focus {
       background: #005bb5;
+      outline: none;
     }
 
     @media (max-width: 768px) {
       .products {
         grid-template-columns: 1fr;
+      }
+      .card {
+        aspect-ratio: auto; /* در موبایل بهتر است ابعاد آزاد باشد */
+      }
+      .card img {
+        max-height: 300px;
+        padding: 8px;
       }
     }
 
@@ -124,6 +148,7 @@
       font-size: 1rem;
       color: #a0c4ff;
       text-align: center;
+      line-height: 1.6;
     }
 
     .contact-info strong {
@@ -148,13 +173,13 @@
     <img src="./photos/logo2.png" alt="لوگو پویا" class="logo" />
   </header>
 
-  <section class="products">
+  <section class="products" aria-label="محصولات">
     <div class="card">
       <img src="./photos/oilgulf.png" alt="روغن موتور 20W50" />
       <div class="card-content">
         <h2>روغن موتور 20W50</h2>
         <p>مناسب برای شرایط سخت کاری و موتورهای دیزلی سنگین. پایداری حرارتی و مقاومت در برابر اکسیداسیون.</p>
-        <a href="./oil-20w50.html" class="btn">خرید روغن موتور 20W50</a>
+        <a href="./oil-20w50.html" class="btn" aria-label="خرید روغن موتور 20W50">خرید روغن موتور 20W50</a>
       </div>
     </div>
 
@@ -163,13 +188,13 @@
       <div class="card-content">
         <h2>روغن هیدرولیک 68</h2>
         <p>ویسکوزیته پایدار، مناسب برای سیستم‌های هیدرولیکی سنگین، مقاوم در برابر خوردگی و فرسایش.</p>
-        <a href="./hydraulic-68.html" class="btn">خرید روغن هیدرولیک 68</a>
+        <a href="./hydraulic-68.html" class="btn" aria-label="خرید روغن هیدرولیک 68">خرید روغن هیدرولیک 68</a>
       </div>
     </div>
   </section>
 
-  <section class="contact-us" id="contact">
-    <h2>ارتباط با ما</h2>
+  <section class="contact-us" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">ارتباط با ما</h2>
     <p>برای خرید و استعلام قیمت با ما در تماس باشید.</p>
     <div class="contact-info">
       <p><strong>تلفن:</strong> 031-37886812 , 031-3788611</p>
