@@ -2,32 +2,54 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>برندها و قطعات</title>
-  <!-- فونت Vazirmatn با وزن 500 و 700 -->
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <style>
-    /* استایل پایه بدنه و هدر مشابه نمونه دوم */
-    body {
-      font-family: "Vazirmatn", sans-serif;
-      background: #f0f4f8;
-      color: #001d3d;
-      padding: 60px 20px 40px;
-      margin: 0;
-      line-height: 1.7;
+    :root {
+      --primary-dark: #001d3d;
+      --primary-medium: #003566;
+      --accent-light: #70a1ff;
+      --text-light: #f0f4f8;
+      --text-dark: #0d1b2a;
+      --background-light: #ffffff;
+      --background-grey: #f8f9fa;
     }
 
-    header.main-header {
-      position: sticky;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+      padding-top: 80px;
+    }
+
+    /* --- Header ساده بدون نوبار --- */
+    .main-header {
+      position: fixed;
       top: 0;
-      background: linear-gradient(90deg, #00122e, #003366);
-      color: #fff;
-      padding: 1rem 2rem;
+      left: 0;
+      width: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      padding: 0 2rem;
+      height: 80px;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       z-index: 1000;
-      flex-wrap: nowrap;
+      user-select: none;
     }
 
     .header-logo-container {
@@ -35,14 +57,14 @@
       align-items: center;
       gap: 1rem;
       flex-shrink: 0;
-      justify-content: flex-start;
     }
 
     .logo {
       height: 50px;
-      cursor: pointer;
-      user-select: none;
+      width: auto;
+      border-radius: 8px;
       transition: transform 0.3s ease;
+      cursor: default;
     }
 
     .logo:hover {
@@ -50,135 +72,10 @@
     }
 
     .company-title {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      margin: 0;
+      color: var(--primary-dark);
       white-space: nowrap;
-      user-select: none;
-    }
-
-    /* ناوبری */
-    nav.navbar {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
-      user-select: none;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      display: block;
-      transition: color 0.3s ease;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-
-    .nav-link:hover,
-    .nav-item:hover > .nav-link {
-      color: #70a1ff;
-    }
-
-    /* زیرمنو */
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: #fff;
-      min-width: 280px;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-      border-top: 3px solid #70a1ff;
-      z-index: 1500;
-    }
-
-    .nav-item:hover .dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-content {
-      padding: 1rem 1.5rem;
-      color: #333;
-    }
-
-    .dropdown-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 0.5rem;
-      color: #001d3d;
-    }
-
-    .dropdown-text {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      line-height: 1.4;
-      color: #666;
-    }
-
-    .dropdown-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .dropdown-list a {
-      display: block;
-      padding: 0.5rem 0.8rem;
-      color: #003566;
-      font-weight: 500;
-      font-size: 0.9rem;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    }
-
-    .dropdown-list a:hover {
-      background-color: #f8f9fa;
-      color: #70a1ff;
-      transform: translateX(-5px);
-    }
-
-    /* دکمه منوی موبایل */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 0.5rem;
-      border: none;
-      background: none;
-      user-select: none;
-    }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      margin: 3px 0;
-      border-radius: 2px;
-      transition: 0.3s;
     }
 
     /* --- Main Content --- */
@@ -188,95 +85,220 @@
       padding: 3rem 2rem;
     }
 
-    /* سایر استایل‌ها همان‌طور که در کد شما هست */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 4rem;
+      color: var(--primary-dark);
+    }
 
-    /* Responsive */
-    @media (max-width: 767px) {
-      body {
-        padding-top: 70px;
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+      color: var(--primary-medium);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .card-content button {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,29,61,0.3);
+      user-select: none;
+    }
+
+    .card-content button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,29,61,0.4);
+      background: linear-gradient(135deg, var(--primary-medium), var(--accent-light));
+    }
+
+    /* مودال */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 1rem;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      font-size: 1rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
       }
-      header.main-header {
-        flex-wrap: wrap;
-        height: 70px;
-        padding: 0 1rem;
-      }
-      .logo {
-        height: 40px;
-      }
-      .company-title {
-        font-size: 1.2rem;
-      }
-      nav.navbar {
-        width: 100%;
-        justify-content: flex-end;
-      }
-      .nav-menu {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #00122e;
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 1100;
-        max-height: calc(100vh - 70px);
-        overflow-y: auto;
-      }
-      .nav-menu.active {
-        transform: translateX(0);
-      }
-      .nav-item {
-        width: 100%;
-        border-bottom: 1px solid #003366;
-      }
-      .nav-link {
-        padding: 1rem 0;
-        text-align: right;
-        color: #70a1ff;
-      }
-      .dropdown {
-        position: static;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
-        box-shadow: none;
-        border-top: none;
-        border-radius: 0;
-        background: #002244;
-        margin-top: 0.5rem;
-      }
-      .dropdown-content {
-        padding: 1rem;
-        color: #cce0ff;
-      }
-      .dropdown-list a {
-        color: #a0c4ff;
-      }
-      .dropdown-list a:hover {
-        background-color: #003366;
-        color: #70a1ff;
-        transform: none;
-      }
-      .menu-toggle {
-        display: flex;
+      to {
+        transform: translateY(0);
+        opacity: 1;
       }
     }
 
-    @media (max-width: 480px) {
-      .company-title {
-        font-size: 1rem;
+    .modal-content h2 {
+      margin-bottom: 1.5rem;
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-light);
+    }
+
+    .modal-content p {
+      line-height: 1.8;
+      color: #555;
+      white-space: pre-line;
+    }
+
+    .close-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+
+    .close-btn:hover {
+      background: #c82333;
+    }
+
+    /* ریسپانسیو */
+    @media (max-width: 991px) {
+      .container {
+        padding: 2.5rem 1.5rem;
       }
+      
       .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
+      
       .hero-subtitle {
         font-size: 1.1rem;
       }
+      
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
       .card img {
         height: 180px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .card img {
+        height: 200px;
+      }
+      
+      .modal-content {
+        padding: 1.5rem;
+      }
+      
+      .modal-content h2 {
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -284,48 +306,14 @@
 <body>
   <header class="main-header" role="banner">
     <div class="header-logo-container">
-      <a href="#" aria-label="صفحه اصلی">
-        <img src="./photos/logo2.png" alt="لوگو" class="logo" />
-      </a>
-      <h1 class="company-title">قطعات یدکی</h1>
+      <img src="./photos/logo.png" alt="لوگوی شرکت پویا" class="logo" />
+      <h1 class="company-title">عمران و معدن پویا</h1>
     </div>
-
-    <nav class="navbar" role="navigation" aria-label="منوی اصلی">
-      <button class="menu-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="باز و بسته کردن منو" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-menu" id="navMenu">
-        <li class="nav-item">
-          <a href="#" class="nav-link">خانه</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">محصولات ▼</a>
-          <div class="dropdown" role="menu">
-            <div class="dropdown-content">
-              <h3 class="dropdown-title">دسته بندی‌ها</h3>
-              <ul class="dropdown-list">
-                <li><a href="#" role="menuitem">لودر</a></li>
-                <li><a href="#" role="menuitem">بیل مکانیکی</a></li>
-                <li><a href="#" role="menuitem">ژنراتور</a></li>
-              </ul>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">درباره ما</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">تماس با ما</a>
-        </li>
-      </ul>
-    </nav>
   </header>
 
   <div class="container">
     <div class="hero-section">
-      <h1 class="hero-title">برندهای قطعات </h1>
+      <h1 class="hero-title">برندهای قطعات ماشین‌آلات</h1>
       <p class="hero-subtitle">بهترین قطعات یدکی از معتبرترین برندهای جهان</p>
     </div>
 
@@ -334,7 +322,7 @@
         <img src="./photos/cat.png" alt="Caterpillar" />
         <div class="card-content">
           <h3>Caterpillar</h3>
-          <button onclick="openModal('caterpillar')" aria-label="مشاهده جزئیات Caterpillar">مشاهده جزئیات</button>
+          <button onclick="openModal('caterpillar')">مشاهده جزئیات</button>
         </div>
       </div>
       
@@ -342,43 +330,167 @@
         <img src="./photos/volvo.png" alt="Volvo" />
         <div class="card-content">
           <h3>Volvo</h3>
-          <button onclick="openModal('volvo')" aria-label="مشاهده جزئیات Volvo">مشاهده جزئیات</button>
+          <button onclick="openModal('volvo')">مشاهده جزئیات</button>
         </div>
       </div>
-
-      <div class="card">
-        <img src="./photos/hyundai.png" alt="Hyundai" />
-        <div class="card-content">
-          <h3>Hyundai</h3>
-          <button onclick="openModal('hyundai')" aria-label="مشاهده جزئیات Hyundai">مشاهده جزئیات</button>
-        </div>
-      </div>
-
+      
       <div class="card">
         <img src="./photos/komatsu.png" alt="Komatsu" />
         <div class="card-content">
           <h3>Komatsu</h3>
-          <button onclick="openModal('komatsu')" aria-label="مشاهده جزئیات Komatsu">مشاهده جزئیات</button>
+          <button onclick="openModal('komatsu')">مشاهده جزئیات</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="./photos/Hyundai.png" alt="Hyundai" />
+        <div class="card-content">
+          <h3>Hyundai</h3>
+          <button onclick="openModal('hyundai')">مشاهده جزئیات</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="chinese.jpg" alt="ماشین آلات چینی" />
+        <div class="card-content">
+          <h3>ماشین آلات چینی</h3>
+          <button onclick="openModal('chinese')">مشاهده جزئیات</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="./photos/mitsubishi.png" alt="Mitsubishi" />
+        <div class="card-content">
+          <h3>Mitsubishi</h3>
+          <button onclick="openModal('mitsubishi')">مشاهده جزئیات</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="deutz.jpg" alt="Deutz" />
+        <div class="card-content">
+          <h3>Deutz</h3>
+          <button onclick="openModal('deutz')">مشاهده جزئیات</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="cummins.jpg" alt="Cummins" />
+        <div class="card-content">
+          <h3>Cummins</h3>
+          <button onclick="openModal('cummins')">مشاهده جزئیات</button>
         </div>
       </div>
     </div>
   </div>
 
-  <script>
-    // کد جاوااسکریپت برای منوی موبایل
-    function toggleMenu() {
-      const menu = document.getElementById('navMenu');
-      const toggleButton = document.querySelector('.menu-toggle');
-      const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+  <div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()" aria-label="بستن پنجره">×</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+    </div>
+  </div>
 
-      if (isExpanded) {
-        menu.classList.remove('active');
-        toggleButton.setAttribute('aria-expanded', 'false');
-      } else {
-        menu.classList.add('active');
-        toggleButton.setAttribute('aria-expanded', 'true');
-      }
+  <script>
+    const descriptions = {
+      caterpillar: `تأمین و فروش قطعات نو و استوک برای لودر، بلدوزر، گریدر شامل:
+
+• گیربکس
+• سیستم هیدرولیک
+• زیر و بند
+• اکسل
+• مدل‌های پرکاربرد: 966، 950، D8K, D8N, 146G ,140G, 950F
+
+کاترپیلار یکی از معتبرترین برندهای دنیا در زمینه ماشین‌آلات سنگین محسوب می‌شود.`,
+
+      volvo: `تأمین و فروش قطعات یدکی نو و استوک لودر، بیل، ژنراتور شامل:
+
+• موتور: TD60، TD61، TD70، TD71، D6، D7
+• گیربکس
+• پمپ مادر: K3V112، K3V180
+• اکسل
+• سیستم هیدرولیک
+• سیستم برق
+• لودرها: 4400، 4500، L90، L120، L90E/F، L120E/F
+• بیل‌ها: EC210، E240، EC480
+
+ولوو با کیفیت بالا و دوام بیشتر شناخته می‌شود.`,
+
+      komatsu: `تأمین و فروش قطعات با بهترین کیفیت و اصالت کالا برای:
+
+• بیل، بلدوزر، گریدر
+• موتور: 6D140 6D114، 6D125، 102
+• گیربکس
+• پمپ مادر
+• اکسل
+• سیستم هیدرولیک
+• سیستم برق
+
+کوماتسو یکی از پیشروان صنعت ماشین‌آلات در جهان است.`,
+
+      hyundai: `تأمین و فروش قطعات تخصصی انواع بیل و لودر هیوندای شامل:
+
+• موتور: D6BT، S6S، 6BT، 6CT، QSM11
+• گیربکس ZF
+• پمپ مادر: K3v112، K3v180، K5V80، K5v200، Q3W112
+• اکسل ZF
+• سیستم هیدرولیک
+• سیستم برق
+
+هیوندای با تکنولوژی پیشرفته و قیمت مناسب جایگاه ویژه‌ای دارد.`,
+
+      chinese: `تأمین قطعات انواع لودر و بیل مکانیکی ماشین‌آلات چینی:
+
+• موتور: CAT، دویتس , اشتایر
+• گیربکس: ZF و مکانیکی
+• اکسل
+• پمپ مادر
+• سیستم هیدرولیک
+• سیستم برق
+
+ماشین‌آلات چینی با قیمت اقتصادی و در دسترس بودن قطعات مطرح هستند.`,
+
+      mitsubishi: `تأمین انواع قطعات موتورهای ژاپنی:
+
+• میتسوبیشی
+• کوبوتا
+• یانمار
+
+موتورهای ژاپنی با کیفیت بالا و مصرف سوخت بهینه شناخته می‌شوند.`,
+
+      deutz: `قطعات موتورهای هواخشک و آبگرد دویتس شامل انواع مدل‌ها برای کاربردهای مختلف.
+
+دویتس با فناوری آلمانی و کیفیت فوق‌العاده در صنعت موتورسازی شهرت دارد.`,
+
+      cummins: `بهترین کیفیت و انواع برندهای مطرح قطعات جهت موتورهای کمینز برای ماشین‌آلات و ژنراتور شامل:
+
+• 6BT
+• 6CT
+• QSM11
+
+کمینز یکی از معتبرترین تولیدکنندگان موتورهای صنعتی در جهان است.`
+    };
+
+    function openModal(brandKey) {
+      const title = document.querySelector(`[onclick="openModal('${brandKey}')"]`).previousElementSibling.innerText;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalText').innerText = descriptions[brandKey] || 'اطلاعاتی در دسترس نیست.';
+      document.getElementById('infoModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
+
+    function closeModal() {
+      document.getElementById('infoModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // بستن مودال با کلیک خارج از محتوا
+    document.getElementById('infoModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
   </script>
 </body>
 </html>
