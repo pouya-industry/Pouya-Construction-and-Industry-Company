@@ -31,20 +31,16 @@
     
     }
 
-    .header-logo-container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-shrink: 0;
-    }
-
-    .logo {
-      height: 50px;
-      border-radius: 10px;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
+   .header-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  justify-content: flex-start;  /* افزودن این خط */
+}
+.logo {
+  margin-right: auto;  /* افزودن برای فشرده شدن سمت چپ */
+}
 
     .logo:hover {
       transform: scale(1.05);
@@ -436,20 +432,11 @@
   </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="header-logo-container">
-     
-      <h1 class="company-title"> قطعات یدکی </h1>
-    </div>
-     <img src="./photos/logo2.png" alt="لوگوی شرکت پویا" class="logo" />
-   
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    
-  
-  </header>
+  <div class="header-logo-container" style="justify-content: flex-start;">
+  <img src="./photos/logo2.png" alt="لوگو" class="logo" />
+  <h1 class="company-title">قطعات یدکی</h1>
+</div>
+
 
   <div class="container">
     <div class="hero-section">
