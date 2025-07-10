@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>محصولات من</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
       --primary-dark: #001d3d;
@@ -33,8 +34,10 @@
       line-height: 1.7;
       direction: rtl;
       padding-top: 80px;
+      margin: 0;
     }
 
+    /* Header */
     .main-header {
       position: fixed;
       top: 0;
@@ -49,12 +52,14 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+      flex-wrap: wrap;
     }
 
     .header-logo-container {
       display: flex;
       align-items: center;
       gap: 1rem;
+      flex-shrink: 0;
     }
 
     .logo {
@@ -67,16 +72,24 @@
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--primary-dark);
+      min-width: 200px;
+      text-align: center;
+      flex-grow: 1;
     }
 
+    /* Navigation */
     .navbar {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .nav-menu {
       list-style: none;
       display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-item {
@@ -90,8 +103,17 @@
       color: var(--primary-dark);
       font-weight: 600;
       font-size: 1.1rem;
+      white-space: nowrap;
+      transition: color 0.3s ease;
     }
 
+    .nav-link:hover,
+    .nav-link:focus {
+      color: var(--accent-light);
+      outline: none;
+    }
+
+    /* Dropdown */
     .dropdown {
       position: absolute;
       top: 100%;
@@ -108,7 +130,8 @@
       z-index: 999;
     }
 
-    .nav-item:hover .dropdown {
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
@@ -133,6 +156,8 @@
 
     .dropdown-list {
       list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .dropdown-list a {
@@ -145,18 +170,22 @@
       font-weight: 500;
     }
 
-    .dropdown-list a:hover {
+    .dropdown-list a:hover,
+    .dropdown-list a:focus {
       background-color: var(--background-grey);
       color: var(--accent-light);
       transform: translateX(-5px);
+      outline: none;
     }
 
+    /* Social Icons */
     .header-social-icons {
       display: flex;
       gap: 1rem;
       margin-left: 2rem;
       border-left: 1px solid #ddd;
       padding-left: 2rem;
+      flex-shrink: 0;
     }
 
     .header-social-icons a {
@@ -165,17 +194,100 @@
       transition: color 0.3s ease;
     }
 
-    .header-social-icons a:hover {
+    .header-social-icons a:hover,
+    .header-social-icons a:focus {
       color: var(--accent-light);
+      outline: none;
     }
 
-    .section-title {
-      text-align: center;
-      margin: 40px 0 20px;
-      font-size: 2rem;
-      color: #333;
+    /* Responsive Menu Toggle Button */
+    .nav-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--primary-dark);
+      cursor: pointer;
+      padding: 0.5rem;
+      margin-left: 1rem;
     }
 
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      .main-header {
+        padding: 0 1rem;
+      }
+      .company-title {
+        font-size: 1.3rem;
+      }
+      .nav-link {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+      }
+      .header-social-icons {
+        margin-left: 1rem;
+        padding-left: 1rem;
+        gap: 0.7rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-header {
+        flex-wrap: nowrap;
+      }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--background-light);
+        position: absolute;
+        top: 80px;
+        right: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-radius: 0 0 10px 10px;
+        z-index: 999;
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      .nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--background-grey);
+      }
+      .nav-link {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+        width: 100%;
+      }
+      .dropdown {
+        position: static;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: none;
+        border-top: none;
+        min-width: auto;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+      }
+      .dropdown-content {
+        padding: 0 1.5rem 1rem;
+      }
+      .dropdown-list a {
+        padding: 0.75rem 0;
+        border-radius: 0;
+      }
+      .header-social-icons {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+        gap: 1rem;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
 
     .section-title {
       text-align: center;
@@ -210,20 +322,19 @@
     }
 
     .product-image {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;  /* تصویر کاملا کارت رو پر میکنه */
-  border-radius: 12px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
-}
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
 
-.product-card:hover .product-image {
-  transform: scale(1.05);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
-}
-
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+    }
 
     .product-content {
       padding: 15px;
@@ -260,87 +371,115 @@
       text-align: center;
       transition: background-color 0.3s ease;
       align-self: flex-start;
+      cursor: pointer;
     }
 
     .btn-main:hover {
       background-color: #005ccc;
     }
 
-       .contact-us {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #fff;
-  max-width: 750px;
-  margin: 4rem auto;
-  padding: 3rem 2.5rem;
-  border-radius: 25px;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.6);
-  font-family: 'Vazirmatn', sans-serif;
-  position: relative;
-  overflow: hidden;
-}
+    .contact-us {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #fff;
+      max-width: 750px;
+      margin: 4rem auto;
+      padding: 3rem 2.5rem;
+      border-radius: 25px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.6);
+      font-family: 'Vazirmatn', sans-serif;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
 
-.contact-us h2 {
-  font-size: 2.7rem;
-  text-align: center;
-  margin-bottom: 1.3rem;
-  font-weight: 900;
-  color: #ffffff;
-}
+    .contact-us h2 {
+      font-size: 2.7rem;
+      margin-bottom: 1.3rem;
+      font-weight: 900;
+      color: #ffffff;
+    }
 
-.contact-us p {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #a5b4fc;
-  margin-bottom: 2rem;
-}
+    .contact-us p {
+      font-size: 1.2rem;
+      color: #a5b4fc;
+      margin-bottom: 2rem;
+    }
 
-.contact-info {
-  margin-top: 2rem;
-  text-align: center;
-}
+    .contact-info {
+      margin-top: 2rem;
+      text-align: center;
+    }
 
-.contact-info p {
-  font-size: 1.1rem;
-  color: #cbd5e1;
-  margin: 1rem auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  transition: all 0.3s ease;
-}
+    .contact-info p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin: 1rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      transition: all 0.3s ease;
+    }
 
-.contact-info p:hover {
-  color: #fff;
-  transform: translateY(-2px);
-}
+    .contact-info p:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
 
-.contact-info i {
-  color: #60a5fa;
-  font-size: 1.3rem;
-  transition: transform 0.3s ease, color 0.3s;
-}
+    .contact-info i {
+      color: #60a5fa;
+      font-size: 1.3rem;
+      transition: transform 0.3s ease, color 0.3s;
+    }
 
-.contact-info p:hover i {
-  color: #3b82f6;
-  transform: scale(1.2);
-}
+    .contact-info p:hover i {
+      color: #3b82f6;
+      transform: scale(1.2);
+    }
 
-    @media (max-width: 600px) {
-      .company-title {
-        font-size: 1.2rem;
+    @media (max-width: 768px) {
+      .main-header {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .nav-menu {
+        flex-direction: column;
+        width: 100%;
       }
 
       .nav-link {
         padding: 0.5rem 1rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
+      }
+
+      .header-social-icons {
+        margin-top: 1rem;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .company-title {
+        font-size: 1.2rem;
+      }
+
+      .product-image {
+        height: 250px;
       }
     }
   </style>
 </head>
 <body>
 
- <header class="main-header">
+  <header class="main-header" role="banner">
     <div class="header-logo-container">
       <img src="./photos/logo2.png" alt="لوگوی شرکت پویا" class="logo" />
       <h1 class="company-title">عمران و معدن پویا</h1>
@@ -369,46 +508,43 @@
           <a href="#contact" class="nav-link">تماس با ما</a>
         </li>
       </ul>
-      <div class="header-social-icons">
-        <a href="https://www.instagram.com/pouya_heavy_machinery/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-      </div>
     </nav>
+    
   </header>
 
-  <h2 class="section-title">محصولات ویژه</h2>
+  <main>
+    <h2 class="section-title">محصولات ویژه</h2>
 
-  <section class="product-grid">
-    <div class="product-card">
-      <img src="./photos/parts.png" alt="محصول ۱" class="product-image" />
-      <div class="product-content">
-        <h3 class="product-title">قطعات یدکی</h3>
-        <p class="product-description">توضیحی مختصر درباره این محصول ویژه و شگفت‌انگیز که کاربران زیادی به آن علاقه‌مندند.</p>
-        <a href="./parts.html" class="btn-main">مشاهده جزئیات</a>
+    <section class="product-grid" aria-label="محصولات ویژه">
+      <article class="product-card" tabindex="0" aria-labelledby="product1-title" aria-describedby="product1-desc">
+        <img src="./photos/parts.png" alt="تصویر قطعات یدکی" class="product-image" />
+        <div class="product-content">
+          <h3 id="product1-title" class="product-title">قطعات یدکی</h3>
+          <p id="product1-desc" class="product-description">توضیحی مختصر درباره این محصول ویژه و شگفت‌انگیز که کاربران زیادی به آن علاقه‌مندند.</p>
+          <a href="./parts.html" class="btn-main" role="button">مشاهده جزئیات</a>
+        </div>
+      </article>
+
+      <article class="product-card" tabindex="0" aria-labelledby="product2-title" aria-describedby="product2-desc">
+        <img src="./photos/oil.png" alt="تصویر روغن ماشین‌آلات معدنی" class="product-image" />
+        <div class="product-content">
+          <h3 id="product2-title" class="product-title">روغن ماشین‌آلات معدنی</h3>
+          <p id="product2-desc" class="product-description">توضیحی مختصر درباره این محصول خاص که از مواد با کیفیت تهیه شده است و ارزش خرید بالایی دارد.</p>
+          <a href="./selloil.html" class="btn-main" role="button">مشاهده جزئیات</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="contact-us" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">تماس با ما</h2>
+      <p>با ما در ارتباط باشید – پاسخگوی شما هستیم</p>
+      <div class="contact-info">
+        <p><i class="fas fa-phone-alt" aria-hidden="true"></i> <strong>:</strong> ۰۹۱۲۱۲۳۴۵۶۷</p>
+        <p><i class="fas fa-envelope" aria-hidden="true"></i> <strong>:</strong> mpouya54@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <strong>:</strong> اصفهان اتوبان ذوب‌آهن، بعد از خیابان شفق کوچه ۶۱ پلاک ۱۲۲</p>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="product-card">
-      <img src="./photos/oil.png" alt="محصول ۲" class="product-image" />
-      <div class="product-content">
-        <h3 class="product-title">روغن ماشین‌آلات معدنی</h3>
-        <p class="product-description">توضیحی مختصر درباره این محصول خاص که از مواد با کیفیت تهیه شده است و ارزش خرید بالایی دارد.</p>
-        <a href="./selloil.html" class="btn-main">مشاهده جزئیات</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="contact-us">
-  <h2>تماس با ما</h2>
-  <p>با ما در ارتباط باشید – پاسخگوی شما هستیم</p>
-  
-  <div class="contact-info">
-    <p><i class="fas fa-phone-alt"></i> <strong>:</strong> ۰۹۱۲۱۲۳۴۵۶۷</p>
-     <p><i class="fas fa-phone-alt"></i> <strong>:</strong> ۰۹۱۲۱۲۳۴۵۶۷</p>
-      <p><i class="fas fa-phone-alt"></i> <strong>:</strong> ۰۹۱۲۱۲۳۴۵۶۷</p>
-    <p><i class="fas fa-envelope"></i> <strong>:</strong> @gmail.com</p>
-    <p><i class="fas fa-map-marker-alt"></i> <strong>:</strong> اصفهان اتوبان ذوب‌آهن، بعد از خیابان شفق کوچه61 پلاک 122</p>
-  </div>
 </body>
 </html>
