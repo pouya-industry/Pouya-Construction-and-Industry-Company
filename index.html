@@ -801,11 +801,10 @@
 const brandDescriptions = {
   hyundai: {
     title: "هیوندای : فروش قطعات نو و استوک تامین و فروش قطعات تخصصی",
-    text: `
-SLP
+    text: `SLP
 KOLBEN
 MOALE
-vaton rien2
+vaton rien2 ،التن
 os vat
 FMC
 Eurovicambi
@@ -813,32 +812,29 @@ Verjan
 TRU
 LASO
 واندرول
-SCHTAIER
+SCH TAIER
 تأمین و فروش قطعات تخصصی برای مدل‌های:
-  - بیل مکانیکی: 250LC‑7، 210LC‑7H، 170W‑7، 200W‑7، 500LC‑7،
-                  320LC‑7، 520LC‑95، 330LC‑95، 220LC‑95H، 210W‑95، 180W‑95
+  - بیل مکانیکی: 250LC‑7، 210LC‑7H، 170W‑7، 200W‑7، 500LC‑7، 320LC‑7، 520LC‑95، 330LC‑95، 220LC‑95H، 210W‑95، 180W‑95
   - لودر: 780‑7، 770‑7، 760‑7، 757‑7
   - مینی‑بیل: R60‑9
-  - اسکید‌لودر: HSL850‑7
-`
+  - اسکید‌لودر: HSL850‑7`
   },
-
   volvo: {
     title: "ولوو",
     text: "تأمین و فروش قطعات تخصصی تمامی مدل‌های Volvo شامل بیل و لودر"
   },
-
   komatsu: {
     title: "کوماتسو",
     text: "تأمین و فروش قطعات موتور، گیربکس، پمپ مادر، هیدرولیک و زیربند برای ماشین‌آلات لودر، بیل، بلدوزر و گریدر"
   },
-
   caterpillar: {
     title: "کاترپیلار",
     text: "تأمین و فروش قطعات موتور، گیربکس، اکسل و پمپ هیدرولیک برای لودر و بلدوزر"
   }
 };
 
+// برای نمایش مرتب و زیر‌هم در خروجی
+console.log(JSON.stringify(brandDescriptions, null, 2));
 
 
     const modal = document.getElementById('infoModal');
