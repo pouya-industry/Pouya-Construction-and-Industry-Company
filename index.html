@@ -798,116 +798,101 @@
     setInterval(changeBackground, 5000);
 
     // --- Brand Information Modal ---
-const brandDescriptions = {
-  hyundai: {
-    title: "هیوندای : فروش قطعات نو و استوک تامین و فروش قطعات تخصصی",
-    text: `
+ const brandDescriptions = {
+    hyundai: {
+      title: "هیوندای – تأمین قطعات نو و استوک",
+      text: `
 تأمین و فروش قطعات تخصصی برای مدل‌های:
-- بیل مکانیکی:
-  • 250LC‑7
-  • 210LC‑7H
-  • 170W‑7
-  • 200W‑7
-  • 500LC‑7
-  • 320LC‑7
-  • 520LC‑95
-  • 330LC‑95
-  • 220LC‑95H
-  • 210W‑95
-  • 180W‑95
-
-- لودر:
-  • 780‑7
-  • 770‑7
-  • 760‑7
-  • 757‑7
-
-- مینی‌بیل:
-  • R60‑9
-
-- اسکید‌لودر:
-  • HSL850‑7
+• بیل مکانیکی: 250LC‑7, 210LC‑7H, 170W‑7, 200W‑7, 500LC‑7, 320LC‑7, 520LC‑95, 330LC‑95, 220LC‑95H, 210W‑95, 180W‑95
+• لودر: 780‑7, 770‑7, 760‑7, 757‑7
+• مینی‌بیل: R60‑9
+• اسکید‑لودر: HSL850‑7
 `.trim()
-  },
-
-  volvo: {
-    title: "ولوو",
-    text: `
-تأمین و فروش قطعات تخصصی تمامی مدل‌های Volvo شامل:
-- بیل
-- لودر
+    },
+    volvo: {
+      title: "ولوو",
+      text: `
+تأمین و فروش قطعات تخصصی تمامی مدل‌های ولوو:
+• بیل
+• لودر
 `.trim()
-  },
-
-  komatsu: {
-    title: "کوماتسو",
-    text: `
+    },
+    komatsu: {
+      title: "کوماتسو",
+      text: `
 تأمین و فروش قطعات:
-- موتور
-- گیربکس
-- پمپ مادر
-- هیدرولیک
-- زیربند
-
+• موتور
+• گیربکس
+• پمپ مادر
+• هیدرولیک
+• زیربند
 برای ماشین‌آلات:
-- لودر
-- بیل
-- بلدوزر
-- گریدر
+• لودر
+• بیل
+• بلدوزر
+• گریدر
 `.trim()
-  },
-
-  caterpillar: {
-    title: "کاترپیلار",
-    text: `
+    },
+    caterpillar: {
+      title: "کاترپیلار",
+      text: `
 تأمین و فروش قطعات:
-- موتور
-- گیربکس
-- اکسل
-
+• موتور
+• گیربکس
+• اکسل
 ماشین‌آلات:
-- لودر : 988 / 980 / 966 / 950
-- بلدوزر : D9 / D8 / D6
-- گریدر : 140G / 14G
+• لودر: 988/980/966/950
+• بلدوزر: D9/D8/D6
+• گریدر: 140G/14G
 `.trim()
+    }
+  };
+
+ function openModal(key) {
+  const data = brandDescriptions[key];
+  if (data) {
+    modalTitle.innerText = data.title;
+
+    // تبدیل متن به خطوط و ساختاردهی به صورت لیست و تیتر
+    const lines = data.text.split('\n').map(line => line.trim()).filter(Boolean);
+    let html = '';
+    let inList = false;
+
+    lines.forEach(line => {
+      if (line.startsWith('•')) {
+        if (!inList) {
+          html += '<ul style="padding-right:20px; text-align:right; direction:rtl;">';
+          inList = true;
+        }
+        html += `<li style="margin-bottom:6px;">${line.slice(1).trim()}</li>`;
+      } else {
+        if (inList) {
+          html += '</ul>';
+          inList = false;
+        }
+        html += `<div style="font-weight:bold; margin-bottom:8px;">${line}</div>`;
+      }
+    });
+    if (inList) html += '</ul>';
+
+    modalText.innerHTML = html;
+    modal.style.display = 'flex';
   }
-};
+}
+function closeModal() {
+  modal.style.display = 'none';
+}
 
-
+  
 // برای نمایش مرتب و زیر‌هم در خروجی
 console.log(JSON.stringify(brandDescriptions, null, 2));
 
 
     const modal = document.getElementById('infoModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalText = document.getElementById('modalText');
+const modalTitle = document.getElementById('modalTitle');
+const modalText = document.getElementById('modalText');
 
-    function openModal(key) {
-      const data = brandDescriptions[key];
-      if (data) {
-        modalTitle.innerText = data.title;
-        modalText.innerHTML = data.text;
-        modal.style.display = 'flex';
-      }
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-    }
-
-    // Close modal by clicking outside the content area
-    modal.addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeModal();
-      }
-    });
-
-    // Close modal with the 'Escape' key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.style.display === 'flex') {
-        closeModal();
-      }
-    });
+    
   </script>
 </body>
 </html>
