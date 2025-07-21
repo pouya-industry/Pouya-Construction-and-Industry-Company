@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تولید لوازم صنعتی پویا</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    .logo {
+      height: 50px;
+      margin-left: 1.5rem;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease, filter 0.3s ease;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #f0f4f8;
+      color: #001d3d;
+      padding-top: 60px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(90deg,#00122e,#003366);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    header .logo {
+      height: 40px;
+      transition: transform .3s;
+      cursor: pointer;
+    }
+    header .logo:hover {
+      transform: scale(1.1);
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,29,61,0.1);
+      gap: 1rem;
+    }
+    .hero-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    .hero-content h1 {
+      font-size: 2.4rem;
+      color: #00122e;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background: #0072ce;
+      color: #fff;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .3s, transform .3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: #005bb5;
+      transform: translateY(-3px);
+    }
+    .hero img {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      border-radius: 12px;
+      transition: transform .3s, box-shadow .3s;
+      background: #e6f0ff;
+      padding: 2rem;
+    }
+    .hero img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(0,29,61,0.2);
+    }
+    @media(max-width:768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero img {
+        margin-top: 2rem;
+        max-width: 100%;
+        min-width: auto;
+      }
+      .hero-content {
+        min-width: auto;
+      }
+    }
+    .products {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+    .product {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,29,61,0.1);
+      padding: 2rem;
+      text-align: center;
+      transition: transform .3s, box-shadow .3s;
+      border: 2px solid transparent;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,29,61,0.2);
+      border-color: #0072ce;
+    }
+    .product-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #0072ce, #005bb5);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+    .product h3 {
+      margin-bottom: 1rem;
+      color: #00122e;
+      font-size: 1.3rem;
+    }
+    .product p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #003366;
+    }
+    .product-features {
+      list-style: none;
+      text-align: right;
+      margin: 1rem 0;
+    }
+    .product-features li {
+      padding: 0.3rem 0;
+      color: #001d3d;
+      position: relative;
+      padding-right: 1.5rem;
+    }
+    .product-features li:before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      color: #28a745;
+      font-weight: bold;
+    }
+    .manufacturing {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: linear-gradient(135deg, #e6f0ff, #f8fbff);
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,29,61,0.1);
+    }
+    .manufacturing h2 {
+      margin-bottom: 1.5rem;
+      color: #003366;
+      text-align: center;
+      font-size: 2rem;
+    }
+    .manufacturing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .manufacturing-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,29,61,0.1);
+      transition: transform .3s;
+    }
+    .manufacturing-item:hover {
+      transform: translateY(-3px);
+    }
+    .manufacturing-item h4 {
+      color: #00122e;
+      margin-bottom: 0.5rem;
+    }
+    .specifications {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,29,61,0.1);
+    }
+    .specifications h2 {
+      margin-bottom: 1.5rem;
+      color: #003366;
+      text-align: center;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .spec-table th,
+    .spec-table td {
+      padding: 1rem;
+      text-align: right;
+      border-bottom: 1px solid #e6f0ff;
+    }
+    .spec-table th {
+      background: #f8fbff;
+      color: #003366;
+      font-weight: 700;
+    }
+    .spec-table tr:hover {
+      background: #f8fbff;
+    }
+    .contact {
+      max-width: 1200px;
+      margin: 3rem auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,29,61,0.1);
+    }
+    .contact h2 {
+      font-size: 1.8rem;
+      color: #003366;
+      margin-bottom: 1.5rem;
+    }
+    .contact ul {
+      list-style: none;
+      line-height: 2;
+      font-size: 1.1rem;
+    }
+    .contact li {
+      margin: 0.5rem 0;
+    }
+    .quality-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: #28a745;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .product {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>تولید لوازم صنعتی پویا</h1>
+    <img src="photos/logo2.png" alt="لوگوی پویا" class="logo" />
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>تولیدکننده تجهیزات صنعتی پیشرفته</h1>
+      <p>طراحی و تولید انواع پرس هیدرولیک، پمپ‌های صنعتی، سیلندرهای هیدرولیک و ماشین‌آلات سنگین با بالاترین کیفیت و استانداردهای جهانی.</p>
+      <a href="#products" class="btn-primary">مشاهده محصولات</a>
+    </div>
+    <div style="flex: 1; min-width: 300px; max-width: 500px; background: #e6f0ff; border-radius: 12px; padding: 3rem; text-align: center; font-size: 4rem; color: #0072ce;">
+      🏭
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <div class="product">
+      <div class="quality-badge">کیفیت A+</div>
+      <div class="product-icon">🔧</div>
+      <h3>پرس هیدرولیک سنگین</h3>
+      <p>پرس‌های هیدرولیک با ظرفیت 50 تا 500 تن برای کاربردهای صنعتی سنگین</p>
+      <ul class="product-features">
+        <li>سیستم کنترل PLC</li>
+        <li>ایمنی بالا با سنسورهای حفاظتی</li>
+        <li>قابلیت تنظیم فشار دقیق</li>
+        <li>ساخت با فولاد مقاوم</li>
+      </ul>
+    </div>
+    
+    <div class="product">
+      <div class="quality-badge">ضمانت 2 سال</div>
+      <div class="product-icon">⚙️</div>
+      <h3>پمپ‌های هیدرولیک</h3>
+      <p>انواع پمپ‌های هیدرولیک با دبی و فشار بالا برای سیستم‌های صنعتی</p>
+      <ul class="product-features">
+        <li>راندمان بالا و مصرف کم</li>
+        <li>عملکرد بی‌صدا</li>
+        <li>مقاومت در برابر خوردگی</li>
+        <li>نگهداری آسان</li>
+      </ul>
+    </div>
+    
+    <div class="product">
+      <div class="quality-badge">ساخت ایران</div>
+      <div class="product-icon">🔩</div>
+      <h3>سیلندر هیدرولیک</h3>
+      <p>سیلندرهای هیدرولیک تک و دو طرفه با ابعاد و مشخصات متنوع</p>
+      <ul class="product-features">
+        <li>مهر و موم‌های مقاوم</li>
+        <li>کروم سخت روی پیستون</li>
+        <li>تست کیفیت 100٪</li>
+        <li>طراحی سفارشی</li>
+      </ul>
+    </div>
+    
+    <div class="product">
+      <div class="quality-badge">تکنولوژی جدید</div>
+      <div class="product-icon">🏗️</div>
+      <h3>ماشین‌آلات سنگین</h3>
+      <p>طراحی و ساخت انواع ماشین‌آلات صنعتی سنگین مطابق نیاز مشتری</p>
+      <ul class="product-features">
+        <li>طراحی مهندسی دقیق</li>
+        <li>استفاده از مواد اولیه مرغوب</li>
+        <li>تست عملکرد کامل</li>
+        <li>پشتیبانی فنی مادام‌العمر</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="manufacturing">
+    <h2>فرآیند تولید</h2>
+    <div class="manufacturing-grid">
+      <div class="manufacturing-item">
+        <h4>طراحی و مهندسی</h4>
+        <p>طراحی دقیق با نرم‌افزارهای CAD/CAM پیشرفته</p>
+      </div>
+      <div class="manufacturing-item">
+        <h4>انتخاب مواد</h4>
+        <p>استفاده از بهترین فولادهای آلیاژی و مواد اولیه</p>
+      </div>
+      <div class="manufacturing-item">
+        <h4>ماشین‌کاری دقیق</h4>
+        <p>استفاده از دستگاه‌های CNC با دقت بالا</p>
+      </div>
+      <div class="manufacturing-item">
+        <h4>مونتاژ و تست</h4>
+        <p>مونتاژ حرفه‌ای و تست کیفیت قبل از تحویل</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="specifications">
+    <h2>مشخصات فنی محصولات</h2>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>محصول</th>
+          <th>ظرفیت/توان</th>
+          <th>ابعاد (mm)</th>
+          <th>وزن (kg)</th>
+          <th>کاربرد</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>پرس هیدرولیک 100 تن</td>
+          <td>100 تن</td>
+          <td>2000×1500×3000</td>
+          <td>3500</td>
+          <td>فرمینگ فلزات</td>
+        </tr>
+        <tr>
+          <td>پمپ هیدرولیک 50 لیتر</td>
+          <td>50 L/min</td>
+          <td>800×600×900</td>
+          <td>150</td>
+          <td>سیستم‌های هیدرولیک</td>
+        </tr>
+        <tr>
+          <td>سیلندر 200/100</td>
+          <td>200 بار</td>
+          <td>Ø100×1000</td>
+          <td>45</td>
+          <td>جک‌های صنعتی</td>
+        </tr>
+        <tr>
+          <td>دستگاه خم‌کن لوله</td>
+          <td>80 تن</td>
+          <td>2500×1200×1800</td>
+          <td>2800</td>
+          <td>خم‌کاری لوله</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>ارتباط با ما</h2>
+    <ul>
+      <li>📞 تلفن: 031-12345678</li>
+      <li>📱 همراه: 09123456789</li>
+      <li>📧 ایمیل: info@poyaindustrial.com</li>
+      <li>🌐 وبسایت: www.poyaindustrial.com</li>
+      <li>📍 اصفهان، اتوبان ذوب آهن، بعد از خیابان شفق، کوی 61، پلاک 122</li>
+    </ul>
+  </section>
+</body>
+</html>
