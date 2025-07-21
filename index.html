@@ -799,10 +799,10 @@
 
     // --- Brand Information Modal ---
 const brandDescriptions = {
-  hyundai: {
+   hyundai: {
     title: "هیوندای – تأمین قطعات نو و استوک",
     text: `
- بیل مکانیکی:
+اطلاعات بیل مکانیکی:
 • 250LC‑7
 • 210LC‑7H
 • 170W‑7
@@ -816,8 +816,8 @@ const brandDescriptions = {
 • 180W‑95
 
 لودر:
-• 780‑7 
-•770‑7
+• 780‑7
+•770‑7 
 •760‑7
 •757‑7
 
@@ -834,10 +834,57 @@ YANMAR <img src="./photos/YANMAR.png" alt="YANMAR" style="width: 32px; height: 3
 ZF <img src="./photos/ZF.png" alt="ZF" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
 HOLSET <img src="./photos/HOLSET.png" alt="holset" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
 `.trim()
-  },
-  // ... سایر برندها
-};
+    },
+    volvo: {
+      title: "ولوو",
+      text: `
+تأمین و فروش قطعات تخصصی تمامی مدل‌های ولوو:
+• بیل
+• لودر
+`.trim()
+    },
+    komatsu: {
+      title: "کوماتسو",
+      text: `
+تأمین و فروش قطعات:
+• موتور
+• گیربکس
+• پمپ مادر
+• هیدرولیک
+• زیربند
 
+ماشین‌آلات:
+• لودر
+• بیل
+• بلدوزر
+• گریدر
+
+
+
+RIK <img src="./photos/rik.png" alt="RIK" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
+
+TP <img src="./photos/tp.png" alt="tp" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
+
+DAIDO <img src="./photos/aido.png" alt="daido" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
+
+TAIHO <img src="./photos/taiho.png" alt="taiho" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
+`.trim()
+    },
+    caterpillar: {
+      title: "کاترپیلار",
+      text: `
+تأمین و فروش قطعات:
+• موتور
+• گیربکس
+• اکسل
+
+ماشین‌آلات:
+• لودر: 988/980/966/950
+• بلدوزر: D9/D8/D6
+• گریدر: 140G/14G
+`.trim()
+    }
+};
  function openModal(key) {
   const data = brandDescriptions[key];
   if (data) {
