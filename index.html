@@ -799,72 +799,45 @@
 
     // --- Brand Information Modal ---
 const brandDescriptions = {
-    hyundai: {
-      title: "هیوندای – تأمین قطعات نو و استوک",
-      text: `
-تأمین و فروش قطعات تخصصی برای مدل‌های:
-• بیل مکانیکی: 250LC‑7, 210LC‑7H, 170W‑7, 200W‑7, 500LC‑7, 320LC‑7, 520LC‑95, 330LC‑95, 220LC‑95H, 210W‑95, 180W‑95
-• لودر: 780‑7, 770‑7, 760‑7, 757‑7
-• مینی‌بیل: R60‑9
-• اسکیدلودر: HSL850‑7
+  hyundai: {
+    title: "هیوندای – تأمین قطعات نو و استوک",
+    text: `
+ بیل مکانیکی:
+• 250LC‑7
+• 210LC‑7H
+• 170W‑7
+• 200W‑7
+• 500LC‑7
+• 320LC‑7
+• 520LC‑95
+• 330LC‑95
+• 220LC‑95H
+• 210W‑95
+• 180W‑95
+
+لودر:
+• 780‑7 
+•770‑7
+•760‑7
+•757‑7
+
+مینی‌بیل:
+• R60‑9
+
+اسکیدلودر:
+• HSL850‑7
+
 CUMMINS <img src="./photos/CUMMINS.png" alt="CUMMINS" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
-MITSUBISHI <img src="./photos/MITSUBISHI1.PNG" alt="MITSUBISHI" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
+MITSUBISHI <img src="./photos/MITSUBISHI1.png" alt="MITSUBISHI" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
 YANMAR <img src="./photos/YANMAR.png" alt="YANMAR" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
 کوبوتا <img src="./photos/COOB.png" alt="COOB" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
 ZF <img src="./photos/ZF.png" alt="ZF" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
 HOLSET <img src="./photos/HOLSET.png" alt="holset" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
 `.trim()
-    },
-    volvo: {
-      title: "ولوو",
-      text: `
-تأمین و فروش قطعات تخصصی تمامی مدل‌های ولوو:
-• بیل
-• لودر
-`.trim()
-    },
-    komatsu: {
-      title: "کوماتسو",
-      text: `
-تأمین و فروش قطعات:
-• موتور
-• گیربکس
-• پمپ مادر
-• هیدرولیک
-• زیربند
-
-ماشین‌آلات:
-• لودر
-• بیل
-• بلدوزر
-• گریدر
-
-
-
-RIK <img src="./photos/rik.png" alt="RIK" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
-
-TP <img src="./photos/tp.png" alt="tp" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
-
-DAIDO <img src="./photos/aido.png" alt="daido" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
-
-TAIHO <img src="./photos/taiho.png" alt="taiho" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 15px;">
-`.trim()
-    },
-    caterpillar: {
-      title: "کاترپیلار",
-      text: `
-تأمین و فروش قطعات:
-• موتور
-• گیربکس
-• اکسل
-
-ماشین‌آلات:
-• لودر: 988/980/966/950
-• بلدوزر: D9/D8/D6
-• گریدر: 140G/14G
-`.trim()
-    }
+  },
+  // ... سایر برندها
 };
+
  function openModal(key) {
   const data = brandDescriptions[key];
   if (data) {
