@@ -52,158 +52,27 @@
       transition: all 0.3s ease;
     }
 
-    .header-logo-container {
+    header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(90deg, #00122e, #003366);
+      color: #fff;
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
-      flex-shrink: 0;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
     }
-
     .logo {
       height: 50px;
-      width: auto;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-    }
-
-    .company-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      white-space: nowrap;
-    }
-
-    .navbar {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      display: block;
-      padding: 1rem 1.2rem;
-      text-decoration: none;
-      color: var(--primary-dark);
-      font-weight: 600;
-      font-size: 1rem;
-      position: relative;
-      transition: color 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 10px;
-      right: 1.2rem;
-      width: 0;
-      height: 2px;
-      background-color: var(--accent-light);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover,
-    .nav-item:hover > .nav-link {
-      color: var(--accent-light);
-    }
-
-    .nav-link:hover::after,
-    .nav-item:hover > .nav-link::after {
-      width: calc(100% - 2.4rem);
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: var(--background-light);
-      min-width: 280px;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-      border-top: 3px solid var(--accent-light);
-    }
-
-    .nav-item:hover .dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-content {
-      padding: 1.5rem;
-    }
-
-    .dropdown-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .dropdown-text {
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-
-    .dropdown-list {
-      list-style: none;
-    }
-
-    .dropdown-list a {
-      text-decoration: none;
-      color: var(--primary-medium);
-      display: block;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-
-    .dropdown-list a:hover {
-      background-color: var(--background-grey);
-      color: var(--accent-light);
-      transform: translateX(-5px);
-    }
-
-    .header-social-icons {
-      display: flex;
-      gap: 1rem;
       margin-left: 1.5rem;
-      border-left: 1px solid #ddd;
-      padding-left: 1.5rem;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      border-radius: 10px;
     }
-
-    .header-social-icons a {
-      color: var(--primary-medium);
-      font-size: 1.2rem;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .header-social-icons a:hover {
-      color: var(--accent-light);
-      transform: translateY(-2px);
+    header h1 {
+      font-size: 1.8rem;
+      margin: 0;
     }
 
     .menu-toggle {
@@ -431,53 +300,9 @@
   </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="header-logo-container">
-      <img src="./photos/logo.png" alt="لوگوی شرکت پویا" class="logo" />
-      <h1 class="company-title">عمران و معدن پویا</h1>
-    </div>
-    <button class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <nav class="navbar">
-      <ul class="nav-menu" id="navMenu">
-        <li class="nav-item">
-          <a href="#" class="nav-link">فروشگاه</a>
-          <div class="dropdown">
-            <div class="dropdown-content">
-              <h3 class="dropdown-title">محصولات فروشگاه</h3>
-              <p class="dropdown-text">مجموعه کاملی از بهترین محصولات را در فروشگاه ما پیدا کنید.</p>
-              <ul class="dropdown-list">
-                <li><a href="/devicesell.html">ماشین آلات صنعتی</a></li>
-                <li><a href="./parts.html">قطعات یدکی</a></li>
-                <li><a href="./selloil.html">روغن</a></li>
-                <li><a href="./hammer.html">چکش صنعتی</a></li>
-              </ul>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">درباره ما</a>
-          <div class="dropdown">
-            <div class="dropdown-content">
-              <h3 class="dropdown-title">درباره شرکت ما</h3>
-              <p class="dropdown-text">ما یک شرکت پیشرو در زمینه ارائه خدمات و محصولات باکیفیت هستیم.</p>
-              <ul class="dropdown-list">
-                <li><a href="#">تاریخچه شرکت</a></li>
-                <li><a href="#">تیم مدیریت</a></li>
-                <li><a href="#">ماموریت و چشم‌انداز</a></li>
-                <li><a href="#">گواهینامه‌ها</a></li>
-              </ul>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="#contact" class="nav-link">تماس با ما</a>
-        </li>
-      </ul>
-    </nav>
+ <header>
+    <h1>فروش قطعات</h1>
+    <img src="./photos/logo2.png" alt="لوگو پویا" class="logo" />
   </header>
 
   <div class="container">
